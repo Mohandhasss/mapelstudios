@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapel Studios | AR Video</title>
+    <title>Mapel Studios | AR Video Experience</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        #ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100; 
-              display: flex; flex-direction: column; align-items: center; justify-content: center; 
-              background: rgba(0,0,0,0.9); color: white; }
-        #start-btn { padding: 20px 40px; font-size: 18px; background: #00cfd5; border: none; 
-                    border-radius: 50px; cursor: pointer; color: white; font-weight: bold; 
-                    box-shadow: 0 4px 15px rgba(0,207,213,0.4); transition: 0.3s; }
-        #start-btn:active { transform: scale(0.95); }
-        .logo-text { font-size: 24px; letter-spacing: 2px; margin-bottom: 20px; font-weight: bold; }
-    </style>
 </head>
 <body>
+
     <div id="ui">
         <div class="logo-text">MAPEL STUDIOS</div>
-        <button id="start-btn">ACTIVATE AR EXPERIENCE</button>
-        <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">Allow camera access when prompted</p>
+        <button id="start-btn">ACTIVATE AR</button>
+        <p class="instruction">Point your camera at the target image</p>
     </div>
 
-    <a-scene mindar-image="imageTargetSrc: data/targets.mind; autoStart: false;" 
-             renderer="colorManagement: true, physicallyCorrectLights: true" 
-             vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene 
+        mindar-image="imageTargetSrc: data/targets.mind; autoStart: false;" 
+        renderer="colorManagement: true, physicallyCorrectLights: true" 
+        vr-mode-ui="enabled: false" 
+        device-orientation-permission-ui="enabled: false">
         
         <a-assets>
             <video id="ar-video" src="assets/video1.mp4" 
@@ -42,31 +38,6 @@
         </a-entity>
     </a-scene>
 
-    <script>
-        const startBtn = document.querySelector('#start-btn');
-        const video = document.querySelector('#ar-video');
-        const sceneEl = document.querySelector('a-scene');
-        const ui = document.querySelector('#ui');
-
-        startBtn.addEventListener('click', () => {
-            ui.style.opacity = '0';
-            setTimeout(() => { ui.style.display = 'none'; }, 500);
-            
-            // Start AR Engine
-            sceneEl.systems['mindar-image-system'].start();
-            
-            // Play video (Big Company Tip: Some browsers require a click to play sound)
-            video.play().catch(e => {
-                console.log("Autoplay blocked. Muting and retrying...");
-                video.muted = true;
-                video.play();
-            });
-        });
-
-        // Smart Video Control
-        const target = document.querySelector('#target');
-        target.addEventListener("targetFound", () => { video.play(); });
-        target.addEventListener("targetLost", () => { video.pause(); });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
