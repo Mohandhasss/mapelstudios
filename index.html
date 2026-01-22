@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapel Studios | AR Experience</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+</head>
+<body>
+    <div id="ui-overlay">
+        <img src="logo.png" alt="Mapel Studios" class="logo">
+        <button id="start-btn">ENTER AR</button>
+    </div>
+
+    <a-scene mindar-image="imageTargetSrc: data/targets.mind; autoStart: false;" embedded>
+        <a-assets>
+            <a-asset-item id="charModel" src="assets/character.glb"></a-asset-item>
+        </a-assets>
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-gltf-model src="#charModel" position="0 0 0" scale="0.1 0.1 0.1"></a-gltf-model>
+        </a-entity>
+    </a-scene>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
