@@ -9,13 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startBtn.addEventListener('click', () => {
         ui.style.display = 'none';
-        
-        // 1. Start the AR Engine first
-        sceneEl.systems['mindar-image-system'].start();
-        
-        // 2. Try to show and play the scanner overlay
         hud.style.display = 'block';
-        scannerVideo.play().catch(e => console.warn("Scanner video wait:", e));
+        
+        // Start AR Engine and Overlay Video
+        sceneEl.systems['mindar-image-system'].start();
+        scannerVideo.play().catch(e => console.warn("Scanner Play Error:", e));
     });
 
     target.addEventListener("targetFound", () => { 
