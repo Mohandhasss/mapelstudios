@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapel Studios | AR Video Experience</title>
+    <title>Mapel Studios | AR Experience</title>
     
     <link rel="stylesheet" href="css/style.css">
 
@@ -16,6 +16,13 @@
         <div class="logo-text">MAPEL STUDIOS</div>
         <button id="start-btn">ACTIVATE AR</button>
         <p class="instruction">Point your camera at the target image</p>
+    </div>
+
+    <div id="hud-container">
+        <video id="scanner-video" loop muted playsinline>
+            <source src="assets/scanner.mov" type="video/quicktime">
+            <source src="assets/scanner.mov" type="video/mp4">
+        </video>
     </div>
 
     <a-scene 
