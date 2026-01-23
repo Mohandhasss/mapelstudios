@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapel Studios | AR Experience</title>
-    
+    <title>Mapel Studios | AR</title>
     <link rel="stylesheet" href="css/style.css">
-
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 </head>
@@ -15,11 +13,10 @@
     <div id="ui">
         <div class="logo-text">MAPEL STUDIOS</div>
         <button id="start-btn">ACTIVATE AR</button>
-        <p class="instruction">Point your camera at the target image</p>
     </div>
 
     <div id="hud-container">
-        <video id="scanner-video" loop muted playsinline>
+        <video id="scanner-video" loop muted playsinline webkit-playsinline>
             <source src="assets/scanner.mov" type="video/quicktime">
             <source src="assets/scanner.mov" type="video/mp4">
         </video>
@@ -29,14 +26,10 @@
         mindar-image="imageTargetSrc: data/targets.mind; autoStart: false;" 
         xr-mode-ui="enabled: false" 
         vr-mode-ui="enabled: false"
-        renderer="colorManagement: true, physicallyCorrectLights: true" 
         device-orientation-permission-ui="enabled: false">
         
         <a-assets>
-            <video id="ar-video" src="assets/video1.mp4" 
-                   preload="auto" loop="true" 
-                   crossorigin="anonymous" playsinline webkit-playsinline>
-            </video>
+            <video id="ar-video" src="assets/video1.mp4" preload="auto" loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
