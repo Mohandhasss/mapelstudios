@@ -1,4 +1,4 @@
-/* 1. General Page Setup */
+/* 1. General Setup */
 body {
     margin: 0;
     overflow: hidden;
@@ -6,55 +6,65 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* 2. START SCREEN (The page that changed) */
+/* 2. START SCREEN (Restoring the layout from your screenshot) */
 #ui {
     position: fixed;
-    inset: 0; /* Full screen */
+    inset: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stacks logo above button */
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    background-color: rgba(0, 0, 0, 0.85);
     z-index: 1000;
 }
 
-/* THE BUTTON - Restoring its look and clickability */
+/* Mapel Studios Text Style */
+.logo-text {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 30px; /* Space between text and button */
+    text-transform: uppercase;
+}
+
+/* The Start Button */
 #start-btn {
     padding: 15px 40px;
-    font-size: 20px;
-    background: #00cfd5; /* Your Mapel Studios Blue */
+    font-size: 18px;
+    background: #00cfd5; /* Mapel Studios Blue */
     color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    pointer-events: auto; /* IMPORTANT: Makes it clickable */
-    box-shadow: 0 4px 15px rgba(0, 207, 213, 0.4);
+    pointer-events: auto; /* Ensures it can be clicked */
+    transition: transform 0.2s;
 }
 
 #start-btn:active {
-    transform: scale(0.95);
+    transform: scale(0.9);
 }
 
-/* 3. SCANNER BOX (The size we shrunk) */
+/* 3. SCANNER HUD (The small box you wanted) */
 #hud-container {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     
-    /* Change these to resize your scanner area */
-    width: 300px; 
-    height: 300px; 
+    /* Resized area */
+    width: 320px; 
+    height: 320px; 
     
     z-index: 60;
     pointer-events: none;
-    display: none; /* Controlled by JS */
+    display: none; /* Controlled by js/main.js */
 }
 
 #hud-container video {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    mix-blend-mode: multiply; /* Removes white background */
+    mix-blend-mode: multiply; /* Removes white bg */
     opacity: 0.9;
 }
