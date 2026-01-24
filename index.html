@@ -4,32 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mapel Studios AR</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://aframe.io/releases/1.5.0/aframem.min.js"></script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 </head>
 <body>
 
     <div id="ui">
-        <div class="logo-text">MAPEL STUDIOS</div>
-        <button id="start-btn">ACTIVATE AR</button>
+        <h1>MAPEL STUDIOS</h1>
+        <button id="start-btn">START AR</button>
     </div>
 
-    <div id="top-icons">
-        <button id="btn-left" class="icon-btn">
-            <img src="assets/left-button.png" alt="Menu">
-        </button>
-        <button id="btn-right" class="icon-btn">
-            <img src="assets/right-button.png" alt="Settings">
-        </button>
-    </div>
-
-    <div id="id-container">
+    <div id="hud-container">
         <video id="scanner-video" src="assets/scanner.mp4" loop muted playsinline webkit-playsinline></video>
     </div>
 
     <a-scene 
         mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no;" 
         xr-mode-ui="enabled: false" 
+        vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
         
         <a-assets>
