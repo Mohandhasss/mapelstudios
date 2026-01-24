@@ -1,4 +1,4 @@
-/* 1. General Setup */
+/* General Reset */
 body {
     margin: 0;
     overflow: hidden;
@@ -6,72 +6,88 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* 2. START SCREEN (Restoring the layout from your screenshot) */
+/* START SCREEN (Mapel Studios Logo + Activate Button) */
 #ui {
     position: fixed;
     inset: 0;
     display: flex;
-    flex-direction: column; /* Stacks logo above button */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.85);
-    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9999; /* Ensures it is on top of everything */
+    pointer-events: auto;
 }
 
-/* Mapel Studios Text Style */
 .logo-text {
     color: white;
     font-size: 28px;
     font-weight: bold;
     letter-spacing: 3px;
-    margin-bottom: 30px; /* Space between text and button */
+    margin-bottom: 30px;
     text-transform: uppercase;
 }
 
-/* The Start Button */
 #start-btn {
     padding: 15px 40px;
     font-size: 18px;
-    background: #00cfd5; /* Mapel Studios Blue */
+    background: #00cfd5;
     color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    pointer-events: auto; /* Ensures it can be clicked */
-    transition: transform 0.2s;
+    transition: 0.2s;
 }
 
-#start-btn:active {
-    transform: scale(0.9);
+/* TOP ICONS (Left and Right Buttons) */
+#top-icons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Pushes one left, one right */
+    padding: 25px;
+    box-sizing: border-box;
+    z-index: 500; /* Stays above the AR scene */
+    pointer-events: none; /* Clicks pass through the container */
 }
 
-/* 3. SCANNER HUD (The small box you wanted) */
+.icon-btn {
+    width: 55px;
+    height: 55px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: auto; /* Buttons themselves are clickable */
+}
+
+.icon-btn img {
+    width: 60%;
+    height: auto;
+}
+
+/* SCANNER BOX (The resized area) */
 #hud-container {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
-    /* Resized area */
     width: 320px; 
     height: 320px; 
-    
     z-index: 60;
     pointer-events: none;
-    display: none; /* Controlled by js/main.js */
+    display: none;
 }
 
 #hud-container video {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    
-    /* This combination is the strongest way to kill a white background */
-    mix-blend-mode: multiply; 
-    filter: contrast(2) brightness(1.2); 
-    
-    /* Ensures no weird gray boxes appear on some mobile browsers */
-    background: transparent !important;
-    opacity: 0.9;
-}
+    mix-blend-mode: multiply; /* Removes white background */
+    filter: contrast(1.5);
 }
