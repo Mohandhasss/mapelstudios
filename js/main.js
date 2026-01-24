@@ -1,30 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.querySelector('#start-btn');
-    const mainVideo = document.querySelector('#ar-video');
-    const scannerVideo = document.querySelector('#scanner-video');
-    const hud = document.querySelector('#hud-container');
-    const sceneEl = document.querySelector('a-scene');
     const ui = document.querySelector('#ui');
+    const hud = document.querySelector('#hud-container');
+    const video = document.querySelector('#ar-video');
+    const scannerVideo = document.querySelector('#scanner-video');
+    const sceneEl = document.querySelector('a-scene');
     const target = document.querySelector('#target');
 
     startBtn.addEventListener('click', () => {
         ui.style.display = 'none';
         hud.style.display = 'block';
-        
-        // Start AR Engine and Overlay Video
+
+        // Start AR
         sceneEl.systems['mindar-image-system'].start();
-        scannerVideo.play().catch(e => console.warn("Scanner Play Error:", e));
+        
+        // Play scanner overlay
+        scannerVideo.play();
     });
 
-    target.addEventListener("targetFound", () => { 
+    target.addEventListener("targetFound", () => {
         hud.style.display = 'none';
-        scannerVideo.pause();
-        mainVideo.play(); 
+        video.play();
     });
 
-    target.addEventListener("targetLost", () => { 
-        mainVideo.pause(); 
+    target.addEventListener("targetLost", () => {
         hud.style.display = 'block';
-        scannerVideo.play().catch(() => {});
+        video.pause();
     });
 });
