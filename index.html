@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapel Studios | AR</title>
-    <link rel="stylesheet" href="css/style.css?v=2">
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mapel Studios AR</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://aframe.io/releases/1.5.0/aframem.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 </head>
 <body>
@@ -15,7 +14,16 @@
         <button id="start-btn">ACTIVATE AR</button>
     </div>
 
-    <div id="hud-container">
+    <div id="top-icons">
+        <button id="btn-left" class="icon-btn">
+            <img src="assets/left-button.png" alt="Menu">
+        </button>
+        <button id="btn-right" class="icon-btn">
+            <img src="assets/right-button.png" alt="Settings">
+        </button>
+    </div>
+
+    <div id="id-container">
         <video id="scanner-video" src="assets/scanner.mp4" loop muted playsinline webkit-playsinline></video>
     </div>
 
@@ -25,7 +33,7 @@
         device-orientation-permission-ui="enabled: false">
         
         <a-assets>
-            <video id="ar-video" src="assets/video1.mp4" preload="auto" loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
+            <video id="ar-video" src="assets/video1.mp4" preload="auto" loop="true" crossorigin="anonymous"></video>
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
