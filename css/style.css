@@ -37,7 +37,7 @@ body {
     object-fit: cover;
     opacity: 0.8;
     /* This makes black backgrounds in the MP4 transparent */
-    mix-blend-mode: screen; 
+    mix-blend-mode: multiply; 
 }
 
 /* Ensure the camera feed fills the screen */
