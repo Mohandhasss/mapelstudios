@@ -65,6 +65,13 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    mix-blend-mode: multiply; /* Removes white bg */
+    
+    /* This combination is the strongest way to kill a white background */
+    mix-blend-mode: multiply; 
+    filter: contrast(2) brightness(1.2); 
+    
+    /* Ensures no weird gray boxes appear on some mobile browsers */
+    background: transparent !important;
     opacity: 0.9;
+}
 }
