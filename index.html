@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mapel Studios AR</title>
-    <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/style.css?v=final">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 </head>
@@ -15,35 +15,28 @@
     </div>
 
     <div id="client-icon-layer" style="display: none;">
-        <button id="btn-left" class="round-corner-btn">
-            <img src="assets/left-button.png" alt="left">
-        </button>
-        <button id="btn-right" class="round-corner-btn">
-            <img src="assets/right-button.png" alt="right">
-        </button>
+        <div id="btn-left" class="round-corner-btn">
+            <img src="assets/left-button.png">
+        </div>
+        <div id="btn-right" class="round-corner-btn">
+            <img src="assets/right-button.png">
+        </div>
     </div>
 
     <div id="hud-container">
         <video id="scanner-video" src="assets/scanner.mp4" loop muted playsinline webkit-playsinline></video>
     </div>
 
-    <a-scene 
-        mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no;" 
-        xr-mode-ui="enabled: false" 
-        vr-mode-ui="enabled: false"
-        device-orientation-permission-ui="enabled: false">
-        
+    <a-scene mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no;" xr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <a-assets>
             <video id="ar-video" src="assets/video1.mp4" preload="auto" loop="true" crossorigin="anonymous"></video>
         </a-assets>
-
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
         <a-entity id="target" mindar-image-target="targetIndex: 0">
             <a-video src="#ar-video" width="1" height="0.552" position="0 0 0"></a-video>
         </a-entity>
     </a-scene>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=final"></script>
 </body>
 </html>
