@@ -85,7 +85,12 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* This combo turns white BG to black and hides it */
-    filter: invert(1) contrast(2) brightness(1.2); 
-    mix-blend-mode: screen; 
+    
+    /* THE FIX: Turn white background to black, then screen it out */
+    filter: invert(1) contrast(2); 
+    mix-blend-mode: screen !important;
+    
+    /* Ensures the video stays on top and attempts to blend */
+    isolation: isolate;
+    background: transparent !important;
 }
