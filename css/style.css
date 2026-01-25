@@ -1,3 +1,4 @@
+/* 1. Global Reset */
 body {
     margin: 0;
     overflow: hidden;
@@ -5,7 +6,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* 1. START SCREEN (ACTIVATE AR) - Stable & Centered */
+/* 2. Start Screen (ACTIVATE AR) */
 #ui {
     position: fixed;
     inset: 0;
@@ -36,7 +37,7 @@ body {
     cursor: pointer;
 }
 
-/* 2. TOP ROUND BUTTONS - Fixed Size & No Borders */
+/* 3. Top Corner Round Buttons - Larger & No White Borders */
 #client-icon-layer {
     position: fixed;
     top: 25px;
@@ -49,12 +50,12 @@ body {
 }
 
 .round-corner-btn {
-    width: 65px; /* Bigger size as requested */
-    height: 65px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.4); 
-    border: none !important; /* FORCES THE WHITE BORDER TO DISAPPEAR */
-    outline: none !important;
+    width: 68px; /* Increased size so they are visible on mobile */
+    height: 68px;
+    border-radius: 50% !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: none !important; /* REMOVES THE WHITE BORDER */
+    outline: none !important; /* REMOVES THE CLICK-OUTLINE */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,16 +63,16 @@ body {
     pointer-events: auto;
     padding: 0;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
 .round-corner-btn img {
-    width: 60%; /* Adjusts the PNG size inside the button */
+    width: 65%; /* Makes your PNG icon bigger inside the button */
     height: auto;
     object-fit: contain;
 }
 
-/* 3. SCANNER FIX - Forcing background disappearance */
+/* 4. Scanner Fix - Crushing the Off-White Background */
 #hud-container {
     position: fixed;
     inset: 0;
@@ -84,8 +85,9 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    mix-blend-mode: multiply; /* Mathematically hides white */
-    /* THE FIX: High contrast forces the off-white background to become pure white (invisible) */
-    filter: contrast(4) brightness(1.2); 
+    mix-blend-mode: multiply; /* Mathematically hides pure white */
+    /* THE FIX: contrast(3) forces the grayish-white in your video to become 100% white, 
+       which the 'multiply' mode then turns completely transparent. */
+    filter: contrast(3) brightness(1.2); 
     opacity: 1;
 }
