@@ -5,7 +5,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* 1. START SCREEN (ACTIVATE AR) */
+/* 1. START SCREEN (ACTIVATE AR) - Stable & Centered */
 #ui {
     position: fixed;
     inset: 0;
@@ -36,7 +36,7 @@ body {
     cursor: pointer;
 }
 
-/* 2. TOP ROUND BUTTONS - FIXED SIZE & NO BORDERS */
+/* 2. TOP ROUND BUTTONS - Fixed Size & No Borders */
 #client-icon-layer {
     position: fixed;
     top: 25px;
@@ -49,12 +49,12 @@ body {
 }
 
 .round-corner-btn {
-    width: 70px; /* Increased size so they aren't small */
-    height: 70px;
+    width: 65px; /* Bigger size as requested */
+    height: 65px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.4); /* Dark translucent background */
-    border: none; /* REMOVES THE WHITE ROUND BORDER */
-    outline: none; /* Removes focus ring */
+    background: rgba(0, 0, 0, 0.4); 
+    border: none !important; /* FORCES THE WHITE BORDER TO DISAPPEAR */
+    outline: none !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,16 +62,16 @@ body {
     pointer-events: auto;
     padding: 0;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Adds professional depth */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .round-corner-btn img {
-    width: 70%; /* Makes your PNG icons look larger inside the button */
+    width: 60%; /* Adjusts the PNG size inside the button */
     height: auto;
     object-fit: contain;
 }
 
-/* 3. SCANNER FIX - FORCING BACKGROUND DISAPPEARANCE */
+/* 3. SCANNER FIX - Forcing background disappearance */
 #hud-container {
     position: fixed;
     inset: 0;
@@ -84,8 +84,8 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    mix-blend-mode: multiply; /* Mathematically removes white */
-    /* HIGHER CONTRAST: This forces the light-grey background of your video to become 100% white, which 'multiply' then makes transparent */
-    filter: contrast(3) brightness(1.1); 
+    mix-blend-mode: multiply; /* Mathematically hides white */
+    /* THE FIX: High contrast forces the off-white background to become pure white (invisible) */
+    filter: contrast(4) brightness(1.2); 
     opacity: 1;
 }
