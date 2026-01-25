@@ -1,35 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const startBtn = document.getElementById('start-btn');
-  const ui = document.getElementById('ui');
-  const hud = document.getElementById('hud-container');
-  const iconLayer = document.getElementById('client-icon-layer');
-  const scannerVideo = document.getElementById('scanner-video');
-  const sceneEl = document.querySelector('a-scene');
+  const startBtn = document.getElementById("start-btn");
+  const ui = document.getElementById("ui");
+  const hud = document.getElementById("hud-container");
+  const iconLayer = document.getElementById("client-icon-layer");
+  const scannerVideo = document.getElementById("scanner-video");
+  const sceneEl = document.querySelector("a-scene");
 
-  // Wait until A-Frame scene is fully loaded
-  sceneEl.addEventListener('loaded', () => {
+  startBtn.addEventListener("click", () => {
 
-    startBtn.addEventListener('click', async () => {
+    // UI changes (this part IS working already)
+    ui.style.display = "none";
+    hud.style.display = "flex";
+    iconLayer.style.display = "flex";
 
-      // Hide start UI
-      ui.style.display = 'none';
+    // 🔴 THIS IS THE IMPORTANT PART
+    // Start MindAR ONLY after scene is ready
+    if (sceneEl.systems && sceneEl.systems["mindar-image-system"]) {
+      sceneEl.systems["mindar-image-system"].start();
+    }
 
-      // Show scanner overlay
-      hud.style.display = 'flex';
-      iconLayer.style.display = 'flex';
-
-      // Start MindAR safely
-      const mindarSystem = sceneEl.systems['mindar-image-system'];
-      await mindarSystem.start();
-
-      // Play scanner animation
+    // Play scanner animation
+    if (scannerVideo) {
       scannerVideo.currentTime = 0;
       scannerVideo.play();
-
-    });
+    }
 
   });
 
 });
+
 
