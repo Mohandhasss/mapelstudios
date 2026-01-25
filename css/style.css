@@ -5,7 +5,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* 1. START SCREEN - Fixed to prevent layout shifts */
+/* 1. START SCREEN (ACTIVATE AR) */
 #ui {
     position: fixed;
     inset: 0;
@@ -36,7 +36,7 @@ body {
     cursor: pointer;
 }
 
-/* 2. ROUND BUTTONS - Absolute positioned to avoid pushing text */
+/* 2. TOP ROUND BUTTONS - FIXED SIZE & NO BORDERS */
 #client-icon-layer {
     position: fixed;
     top: 25px;
@@ -49,11 +49,12 @@ body {
 }
 
 .round-corner-btn {
-    width: 55px;
-    height: 55px;
+    width: 70px; /* Increased size so they aren't small */
+    height: 70px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.4); /* Dark translucent background */
+    border: none; /* REMOVES THE WHITE ROUND BORDER */
+    outline: none; /* Removes focus ring */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,15 +62,16 @@ body {
     pointer-events: auto;
     padding: 0;
     overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Adds professional depth */
 }
 
 .round-corner-btn img {
-    width: 65%;
+    width: 70%; /* Makes your PNG icons look larger inside the button */
     height: auto;
     object-fit: contain;
 }
 
-/* 3. SCANNER FIX - Multiply logic for white background removal */
+/* 3. SCANNER FIX - FORCING BACKGROUND DISAPPEARANCE */
 #hud-container {
     position: fixed;
     inset: 0;
@@ -82,8 +84,8 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* This makes your white video background vanish */
-    mix-blend-mode: multiply; 
-    filter: contrast(1.2); 
-    opacity: 0.9;
+    mix-blend-mode: multiply; /* Mathematically removes white */
+    /* HIGHER CONTRAST: This forces the light-grey background of your video to become 100% white, which 'multiply' then makes transparent */
+    filter: contrast(3) brightness(1.1); 
+    opacity: 1;
 }
