@@ -5,7 +5,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* 1. START SCREEN (ACTIVATE AR) */
+/* 1. START SCREEN */
 #ui {
     position: fixed;
     inset: 0;
@@ -36,10 +36,10 @@ body {
     cursor: pointer;
 }
 
-/* 2. TOP ROUND BUTTONS - REMOVING WHITE GLOW & FIXING SIZE */
+/* 2. TOP BUTTONS - FORCED ROUND & NO BORDERS */
 #client-icon-layer {
     position: fixed;
-    top: 30px; /* Slightly lower for better thumb reach */
+    top: 30px;
     left: 20px;
     right: 20px;
     display: flex;
@@ -49,15 +49,16 @@ body {
 }
 
 .round-corner-btn {
-    width: 75px; /* Bigger size for the client */
-    height: 75px;
+    width: 70px;
+    height: 70px;
+    /* Force absolute circle */
     border-radius: 50% !important;
-    
-    /* FIXING THE WHITE ROUND AROUND BUTTONS */
-    background: rgba(0, 0, 0, 0.5) !important; 
-    border: none !important;
+    /* Remove any browser default styles */
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border: 0 !important;
     outline: none !important;
-    -webkit-appearance: none; /* Removes iOS default styling */
+    box-shadow: none !important;
+    -webkit-appearance: none;
     
     display: flex;
     align-items: center;
@@ -65,24 +66,23 @@ body {
     cursor: pointer;
     pointer-events: auto;
     padding: 0;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .round-corner-btn img {
-    width: 60%; /* Icon looks clean inside the circle */
+    width: 55%;
     height: auto;
-    object-fit: contain;
+    display: block;
+    /* This prevents the white border around the image itself */
+    border: none !important;
 }
 
-/* 3. SCANNER FIX - ELIMINATING THE WHITE BOX */
+/* 3. SCANNER - THE CHROMA FIX */
 #hud-container {
     position: fixed;
     inset: 0;
     z-index: 60;
     pointer-events: none;
     display: none;
-    background: transparent !important;
 }
 
 #hud-container video {
@@ -90,13 +90,13 @@ body {
     height: 100%;
     object-fit: contain;
     
-    /* THE MAGIC COMBO FOR YOUR VIDEO */
-    mix-blend-mode: multiply; 
+    /* Strongest blending mode combination */
+    mix-blend-mode: multiply !important;
     
-    /* We use 'screen' on some videos, but for black-on-white, 
-       multiply + high contrast is the industry standard */
-    filter: contrast(5) brightness(1.2); 
+    /* Extreme contrast to kill off-white shadows */
+    filter: contrast(10) brightness(1.5) grayscale(1);
     
-    opacity: 1;
-    background: transparent !important;
+    /* Hardware acceleration to help blending */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
