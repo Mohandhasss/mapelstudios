@@ -51,22 +51,25 @@ body {
 }
 
 .round-btn {
-    width: 65px;
-    height: 65px;
-    border-radius: 50% !important;
-    background: rgba(0, 0, 0, 0.5) !important;
-    border: none !important; /* Kills the white border */
+    width: 60px;
+    height: 60px;
+    border-radius: 50% !important; /* Forces the rectangle image into a circle */
+    overflow: hidden; /* Cuts off any white corners from the image */
+    background: transparent !important; /* Removes default button gray/white background */
+    border: none !important; /* Removes the white outline/border */
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    pointer-events: auto;
-    padding: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Adds a nice shadow for depth */
 }
 
 .round-btn img {
-    width: 55%;
-    height: auto;
+    width: 100%; /* Makes the red icon fill the circle perfectly */
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* 3. SCANNER - The Background-Killer */
