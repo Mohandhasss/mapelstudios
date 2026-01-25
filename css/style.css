@@ -1,31 +1,25 @@
-body { margin: 0; overflow: hidden; background: #000; font-family: sans-serif; }
-
-#ui { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.9); }
-.logo-text { color: white; font-size: 28px; font-weight: bold; margin-bottom: 30px; letter-spacing: 3px; }
-#start-btn { padding: 15px 40px; background: #00cfd5; color: white; border: none; border-radius: 50px; cursor: pointer; }
-
-/* RED ROUND BUTTONS: Making them perfect circles without borders */
-#icon-layer { 
-    position: fixed; top: 30px; left: 0; width: 100%; 
-    display: flex; justify-content: space-between; 
-    padding: 0 20px; box-sizing: border-box; 
-    z-index: 500; pointer-events: none; 
+/* NEW SCANNER: Forcing absolute transparency on black */
+#hud-container {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: none;
+    pointer-events: none;
+    background: transparent !important; /* Ensure the container isn't adding color */
 }
-.round-btn { 
-    width: 60px; height: 60px; 
-    border-radius: 50% !important; 
-    overflow: hidden; 
-    border: none !important; 
-    background: none !important; 
-    pointer-events: auto; 
-    display: flex; align-items: center; justify-content: center;
-}
-.round-btn img { width: 100%; height: 100%; object-fit: contain; }
 
-/* NEW SCANNER: SCREEN mode to remove BLACK background */
-#hud-container { position: fixed; inset: 0; z-index: 60; display: none; pointer-events: none; }
-#hud-container video { 
-    width: 100%; height: 100%; object-fit: contain; 
-    mix-blend-mode: screen; /* Deletes the black background */
-    opacity: 0.8;
+#hud-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
+    /* 'screen' makes pure black (RGB 0,0,0) 100% transparent */
+    mix-blend-mode: screen !important;
+    
+    /* THE FIX: High contrast pushes grey-blacks to pure black so they vanish. 
+       Brightness(1.5) keeps the red phone lines glowing bright. */
+    filter: contrast(2.5) brightness(1.5); 
+    
+    opacity: 1;
+    background: transparent !important;
 }
