@@ -1,96 +1,31 @@
-body {
-    margin: 0;
-    overflow: hidden;
-    background-color: #000;
-    font-family: sans-serif;
-}
+body { margin: 0; overflow: hidden; background: #000; font-family: sans-serif; }
 
-/* 1. START SCREEN */
-#ui {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.9);
-}
+#ui { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.9); }
+.logo-text { color: white; font-size: 28px; font-weight: bold; margin-bottom: 30px; letter-spacing: 3px; }
+#start-btn { padding: 15px 40px; background: #00cfd5; color: white; border: none; border-radius: 50px; cursor: pointer; }
 
-.logo-text {
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-bottom: 30px;
-    text-transform: uppercase;
+/* RED ROUND BUTTONS: Making them perfect circles without borders */
+#icon-layer { 
+    position: fixed; top: 30px; left: 0; width: 100%; 
+    display: flex; justify-content: space-between; 
+    padding: 0 20px; box-sizing: border-box; 
+    z-index: 500; pointer-events: none; 
 }
-
-#start-btn {
-    padding: 15px 40px;
-    background: #00cfd5;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 18px;
-    cursor: pointer;
+.round-btn { 
+    width: 60px; height: 60px; 
+    border-radius: 50% !important; 
+    overflow: hidden; 
+    border: none !important; 
+    background: none !important; 
+    pointer-events: auto; 
+    display: flex; align-items: center; justify-content: center;
 }
+.round-btn img { width: 100%; height: 100%; object-fit: contain; }
 
-/* 2. CORNER BUTTONS - Forced Round & No White Borders */
-#icon-layer {
-    position: fixed;
-    top: 30px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-sizing: border-box;
-    z-index: 500;
-    pointer-events: none;
-}
-
-.round-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50% !important; /* Forces the rectangle image into a circle */
-    overflow: hidden; /* Cuts off any white corners from the image */
-    background: transparent !important; /* Removes default button gray/white background */
-    border: none !important; /* Removes the white outline/border */
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Adds a nice shadow for depth */
-}
-
-.round-btn img {
-    width: 100%; /* Makes the red icon fill the circle perfectly */
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* 3. SCANNER - The Background-Killer */
-#hud-container {
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    display: none;
-}
-
-#hud-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    
-    /* THE FIX: Turn white background to black, then screen it out */
-    filter: invert(1) contrast(2); 
-    mix-blend-mode: screen !important;
-    
-    /* Ensures the video stays on top and attempts to blend */
-    isolation: isolate;
-    background: transparent !important;
+/* NEW SCANNER: SCREEN mode to remove BLACK background */
+#hud-container { position: fixed; inset: 0; z-index: 60; display: none; pointer-events: none; }
+#hud-container video { 
+    width: 100%; height: 100%; object-fit: contain; 
+    mix-blend-mode: screen; /* Deletes the black background */
+    opacity: 0.8;
 }
