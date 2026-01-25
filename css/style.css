@@ -1,60 +1,31 @@
 body { margin: 0; overflow: hidden; background: #000; font-family: sans-serif; }
 
 /* 1. START UI */
-#ui { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.9); }
-.logo-text { color: white; font-size: 28px; font-weight: bold; margin-bottom: 30px; letter-spacing: 3px; }
-#start-btn { padding: 15px 40px; background: #b13434; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; }
+#ui { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.95); }
+.logo-text { color: white; font-size: 26px; font-weight: bold; letter-spacing: 4px; margin-bottom: 25px; }
+#start-btn { padding: 14px 35px; background: #b13434; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; }
 
-/* 2. RED ROUND BUTTONS */
-#icon-layer { position: fixed; top: 30px; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; box-sizing: border-box; z-index: 500; pointer-events: none; }
-.round-btn { 
-    width: 60px; height: 60px; 
-    border-radius: 50% !important; 
-    border: none !important; 
-    background: none !important; 
-    pointer-events: auto; 
-    display: flex; align-items: center; justify-content: center;
-}
+/* 2. ROUND BUTTONS (Top Corners) */
+#icon-layer { position: fixed; top: 25px; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; box-sizing: border-box; z-index: 500; pointer-events: none; }
+.round-btn { width: 60px; height: 60px; border-radius: 50% !important; border: none !important; background: none !important; pointer-events: auto; }
 .round-btn img { width: 100%; height: 100%; object-fit: contain; }
 
-/* 3. CINEMATIC HUD SCANNER */
-#scanner-container {
-    position: fixed; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 60; pointer-events: none;
-    background: radial-gradient(circle, rgba(177, 52, 52, 0.08) 0%, transparent 70%);
-}
+/* 3. MINIMALIST SCANNER */
+#scanner-container { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 60; pointer-events: none; }
+.simple-scanner { display: flex; flex-direction: column; align-items: center; gap: 35px; }
 
-.hud-wrapper { position: relative; width: 320px; height: 320px; display: flex; align-items: center; justify-content: center; }
+.target-box { position: relative; width: 260px; height: 260px; background: rgba(177, 52, 52, 0.02); }
 
-.laser-beam {
-    position: absolute; width: 110%; height: 3px; background: #ff3333;
-    box-shadow: 0 0 15px #ff0000; z-index: 10;
-    animation: scanMove 2.5s ease-in-out infinite;
-}
+/* Rounded Glowing Corners */
+.corner { position: absolute; width: 40px; height: 40px; border: 4px solid #b13434; filter: drop-shadow(0 0 5px #ff0000); animation: breathe 2s ease-in-out infinite; }
+.tl { top: -8px; left: -8px; border-right: none; border-bottom: none; border-radius: 15px 0 0 0; }
+.tr { top: -8px; right: -8px; border-left: none; border-bottom: none; border-radius: 0 15px 0 0; }
+.bl { bottom: -8px; left: -8px; border-right: none; border-top: none; border-radius: 0 0 0 15px; }
+.br { bottom: -8px; right: -8px; border-left: none; border-top: none; border-radius: 0 0 15px 0; }
 
-.laser-glow {
-    position: absolute; width: 110%; height: 80px;
-    background: linear-gradient(to top, rgba(255, 0, 0, 0.3), transparent);
-    animation: scanMove 2.5s ease-in-out infinite; transform: translateY(-80px);
-}
+.scan-line { position: absolute; width: 100%; height: 2px; background: linear-gradient(to right, transparent, #ff4d4d, transparent); box-shadow: 0 0 15px #ff0000; animation: simpleScan 3.5s linear infinite; }
 
-.ring { position: absolute; border-radius: 50%; border: 2px dashed rgba(177, 52, 52, 0.5); }
-.outer-ring { width: 380px; height: 380px; animation: rotateCW 20s linear infinite; }
-.inner-ring { width: 340px; height: 340px; border: 1px double rgba(177, 52, 52, 0.3); animation: rotateCCW 12s linear infinite; }
+.status-label { color: white; font-size: 13px; letter-spacing: 5px; opacity: 0.7; font-weight: bold; }
 
-.bracket { position: absolute; width: 45px; height: 45px; border: 4px solid #b13434; filter: drop-shadow(0 0 8px #ff0000); }
-.t-l { top: 0; left: 0; border-right: none; border-bottom: none; }
-.t-r { top: 0; right: 0; border-left: none; border-bottom: none; }
-.b-l { bottom: 0; left: 0; border-right: none; border-top: none; }
-.b-r { bottom: 0; right: 0; border-left: none; border-top: none; }
-
-.scan-text {
-    position: absolute; bottom: -70px; color: #ff3333; font-family: monospace;
-    font-size: 13px; letter-spacing: 3px; animation: blink 1s infinite;
-}
-
-@keyframes scanMove { 0%, 100% { top: 0%; opacity: 0.7; } 50% { top: 100%; opacity: 1; } }
-@keyframes rotateCW { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes rotateCCW { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes simpleScan { 0%, 100% { top: 5%; opacity: 0; } 15%, 85% { opacity: 1; } 50% { top: 95%; } }
+@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
