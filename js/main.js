@@ -15,14 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     targetEntity.addEventListener("targetFound", () => {
-        // Hide the scanner when the video appears
-        scanner.style.display = 'none';
+        scanner.style.display = 'none'; // Clear the screen for the AR content
         if (arVideo) arVideo.play();
     });
 
     targetEntity.addEventListener("targetLost", () => {
-        // Bring back the scanner when tracking is lost
-        scanner.style.display = 'flex';
+        scanner.style.display = 'flex'; // Bring back the scan box if user moves
         if (arVideo) arVideo.pause();
     });
 });
