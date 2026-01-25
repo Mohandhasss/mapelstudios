@@ -2,10 +2,10 @@ body {
     margin: 0;
     overflow: hidden;
     background-color: #000;
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
 }
 
-/* START SCREEN */
+/* 1. START SCREEN */
 #ui {
     position: fixed;
     inset: 0;
@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0, 0, 0, 0.9);
 }
 
 .logo-text {
@@ -28,16 +28,16 @@ body {
 
 #start-btn {
     padding: 15px 40px;
-    font-size: 18px;
     background: #00cfd5;
     color: white;
     border: none;
     border-radius: 50px;
+    font-size: 18px;
     cursor: pointer;
 }
 
-/* TOP CORNER BUTTONS */
-#client-icon-layer {
+/* 2. CORNER BUTTONS - Forced Round & No White Borders */
+#icon-layer {
     position: fixed;
     top: 30px;
     left: 0;
@@ -50,25 +50,26 @@ body {
     pointer-events: none;
 }
 
-.round-corner-btn {
+.round-btn {
     width: 65px;
     height: 65px;
     border-radius: 50% !important;
-    background: rgba(0, 0, 0, 0.6) !important;
-    border: none !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    border: none !important; /* Kills the white border */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     pointer-events: auto;
+    padding: 0;
 }
 
-.round-corner-btn img {
+.round-btn img {
     width: 55%;
     height: auto;
 }
 
-/* SCANNER BACKGROUND REMOVAL */
+/* 3. SCANNER - The Background-Killer */
 #hud-container {
     position: fixed;
     inset: 0;
@@ -81,8 +82,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* This combo turns white background to black (invisible) 
-       and black lines to white for a high-tech look */
-    filter: invert(1) contrast(2); 
+    /* This combo turns white BG to black and hides it */
+    filter: invert(1) contrast(2) brightness(1.2); 
     mix-blend-mode: screen; 
 }
