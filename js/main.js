@@ -13,4 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
         sceneEl.systems['mindar-image-system'].start();
         scannerVideo.play();
     });
+// This forces the video background to stay transparent on mobile browsers
+const scannerV = document.getElementById('scanner-video');
+scannerV.addEventListener('play', () => {
+    scannerV.style.backgroundColor = 'transparent';
+    // Forces a re-render of the blending mode
+    scannerV.style.display = 'none';
+    scannerV.offsetHeight; 
+    scannerV.style.display = 'block';
 });
