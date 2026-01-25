@@ -93,18 +93,19 @@ body {
     height: 100%;
     object-fit: contain;
     
-    /* THE FIX: 'lighten' is sometimes more stable than 'screen' for mobile AR */
-    mix-blend-mode: lighten !important;
+    /* 1. Use 'screen' to hide black without turning lines white */
+    mix-blend-mode: screen !important;
     
-    /* AGGRESSIVE FILTERS: 
-       - contrast(5) forces all dark-grey pixels to become absolute black.
-       - brightness(1.4) keeps the red phone lines glowing.
-       - grayscale(1) removes any color-noise from the black background. */
-    filter: contrast(5) brightness(1.4) grayscale(1);
+    /* 2. Adjusted filters: 
+       - contrast(2) is enough to clean the background.
+       - grayscale(0) ensures the red stays RED.
+       - brightness(1.2) makes the red glow. */
+    filter: contrast(2) brightness(1.2) grayscale(0);
     
-    /* Hardware acceleration to help the browser process transparency */
+    /* 3. Force hardware rendering for better blending */
     transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
     
+    opacity: 1;
     background: transparent !important;
 }
