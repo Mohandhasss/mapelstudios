@@ -1,28 +1,28 @@
-body { margin: 0; overflow: hidden; background: #000; font-family: sans-serif; }
+body { margin: 0; overflow: hidden; background: #000; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 
 /* Landing UI */
 #ui { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.95); }
-.logo-text { color: white; font-size: 26px; font-weight: bold; letter-spacing: 4px; margin-bottom: 25px; }
-#start-btn { padding: 14px 35px; background: #b13434; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; }
+.logo-text { color: white; font-size: 26px; font-weight: 700; letter-spacing: 5px; margin-bottom: 30px; }
+#start-btn { padding: 16px 40px; background: #b13434; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: 700; font-size: 14px; text-transform: uppercase; }
 
-/* Round Buttons */
-#icon-layer { position: fixed; top: 25px; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; box-sizing: border-box; z-index: 500; pointer-events: none; }
-.round-btn { width: 60px; height: 60px; border-radius: 50% !important; border: none !important; background: none !important; pointer-events: auto; }
+/* Interface Buttons */
+#icon-layer { position: fixed; top: 30px; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 25px; box-sizing: border-box; z-index: 500; pointer-events: none; }
+.round-btn { width: 65px; height: 65px; pointer-events: auto; }
 .round-btn img { width: 100%; height: 100%; object-fit: contain; }
 
-/* Minimalist Scanner */
+/* Scanner HUD */
 #scanner-container { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 60; pointer-events: none; }
-.simple-scanner { display: flex; flex-direction: column; align-items: center; gap: 35px; }
-.target-box { position: relative; width: 260px; height: 260px; background: rgba(177, 52, 52, 0.02); }
+.simple-scanner { display: flex; flex-direction: column; align-items: center; gap: 40px; }
+.target-box { position: relative; width: 280px; height: 280px; background: rgba(177, 52, 52, 0.01); }
 
-.corner { position: absolute; width: 40px; height: 40px; border: 4px solid #b13434; filter: drop-shadow(0 0 5px #ff0000); animation: breathe 2s ease-in-out infinite; }
-.tl { top: -8px; left: -8px; border-right: none; border-bottom: none; border-radius: 15px 0 0 0; }
-.tr { top: -8px; right: -8px; border-left: none; border-bottom: none; border-radius: 0 15px 0 0; }
-.bl { bottom: -8px; left: -8px; border-right: none; border-top: none; border-radius: 0 0 0 15px; }
-.br { bottom: -8px; right: -8px; border-left: none; border-top: none; border-radius: 0 0 15px 0; }
+.corner { position: absolute; width: 45px; height: 45px; border: 4px solid #b13434; filter: drop-shadow(0 0 10px rgba(255,0,0,0.5)); animation: breathe 2.5s ease-in-out infinite; }
+.tl { top: -10px; left: -10px; border-right: none; border-bottom: none; border-radius: 20px 0 0 0; }
+.tr { top: -10px; right: -10px; border-left: none; border-bottom: none; border-radius: 0 20px 0 0; }
+.bl { bottom: -10px; left: -10px; border-right: none; border-top: none; border-radius: 0 0 0 20px; }
+.br { bottom: -10px; right: -10px; border-left: none; border-top: none; border-radius: 0 0 20px 0; }
 
-.scan-line { position: absolute; width: 100%; height: 2px; background: linear-gradient(to right, transparent, #ff4d4d, transparent); box-shadow: 0 0 15px #ff0000; animation: simpleScan 3.5s linear infinite; }
-.status-label { color: white; font-size: 13px; letter-spacing: 5px; opacity: 0.7; font-weight: bold; }
+.scan-line { position: absolute; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #ff4d4d, transparent); box-shadow: 0 0 15px #ff0000; animation: scanAnim 3s linear infinite; }
+.status-label { color: white; font-size: 12px; letter-spacing: 6px; opacity: 0.8; font-weight: 700; }
 
-@keyframes simpleScan { 0%, 100% { top: 5%; opacity: 0; } 15%, 85% { opacity: 1; } 50% { top: 95%; } }
-@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes scanAnim { 0%, 100% { top: 5%; opacity: 0; } 10%, 90% { opacity: 1; } 50% { top: 95%; } }
+@keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.04); opacity: 0.6; } }
