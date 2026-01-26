@@ -4,13 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const scanner = document.getElementById('scanner-container');
     const icons = document.getElementById('icon-layer');
     const sceneEl = document.querySelector('a-scene');
-    
     const targetEntity = document.getElementById('target');
     const arVideo = document.getElementById('ar-video');
 
-    // 1. Map Target Index to Video filename
-    // You can name your videos assets/video0.mp4, assets/video1.mp4, etc.
-    const getVideoPath = (index) => `assets/video${index}.mp4`;
+    // Matches target index to file: video0.mp4, video1.mp4, etc.
+    const getVideoUrl = (index) => `assets/video${index}.mp4`;
 
     startBtn.addEventListener('click', () => {
         ui.style.display = 'none';
@@ -19,16 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
         sceneEl.systems['mindar-image-system'].start();
     });
 
-    // 2. Dynamic Loading Logic
     targetEntity.addEventListener("targetFound", (event) => {
-        const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
-        console.log("Target Found: Index " + index);
-        
-        // Hide scanner and load the specific video for this target
+        // Find which target was scanned
+        const currentTarget = targetEntity.getAttribute('mindar-image-target').targetIndex;
+        console.log("Found Target: " + currentTarget);
+
+        // Hide scanner and load the specific video file
         scanner.style.display = 'none';
-        arVideo.setAttribute('src', getVideoPath(index));
+        arVideo.setAttribute('src', getVideoUrl(currentTarget));
         arVideo.load();
-        arVideo.play();
+        
+        // Use a promise to ensure video plays correctly on mobile
+        const playPromise = arVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => console.log("Auto-play blocked"));
+        }
     });
 
     targetEntity.addEventListener("targetLost", () => {
