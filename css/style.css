@@ -2,7 +2,7 @@
 body { background: #000; overflow: hidden; font-family: sans-serif; }
 
 /* Landing Overlay */
-#ui { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; }
+#ui { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background:radial-gradient(circle, #1a1a1a 0%, #000000 100%); }
 .logo-text { color: white; font-size: 24px; font-weight: bold; letter-spacing: 6px; margin-bottom: 40px; }
 #start-btn { padding: 18px 45px; background: #b13434; color: white; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; }
 
@@ -14,7 +14,7 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     width: 100%; 
     display: flex; 
     justify-content: space-between; 
-    padding: 0 20px; 
+    padding: 0 0px; 
     z-index: 500; 
     pointer-events: none; /* Allows clicks to pass through to buttons but not empty space */
 }
@@ -35,3 +35,16 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
 .bl { bottom: 0; left: 0; border-right: none; border-top: none; border-radius: 0 0 0 30px; }
 .br { bottom: 0; right: 0; border-left: none; border-top: none; border-radius: 0 0 30px 0; }
 .status-label { color: white; margin-top: 30px; font-size: 10px; letter-spacing: 3px; font-weight: bold; opacity: 0.7; }
+
+
+.main-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+    
+    /* This filter makes the black background "blend" into the page */
+    mix-blend-mode: screen; 
+    
+    /* If the logo is a bit dark, this will make it pop */
+    filter: brightness(1.2) contrast(1.1);
+}
