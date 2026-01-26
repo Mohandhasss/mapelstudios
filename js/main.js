@@ -16,16 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
         sceneEl.systems['mindar-image-system'].start();
     });
 
-    targetEntity.addEventListener("targetFound", (event) => {
+    targetEntity.addEventListener("targetFound", () => {
         const currentTarget = targetEntity.getAttribute('mindar-image-target').targetIndex;
-        scanner.style.display = 'none';
+        scanner.style.display = 'none'; // Hides the scanner when image is matched
         arVideo.setAttribute('src', getVideoUrl(currentTarget));
         arVideo.load();
-        arVideo.play().catch(() => console.log("Play blocked"));
+        arVideo.play().catch(() => console.log("Auto-play blocked"));
     });
 
     targetEntity.addEventListener("targetLost", () => {
-        scanner.style.display = 'flex';
+        scanner.style.display = 'flex'; // Shows scanner again if image is lost
         arVideo.pause();
     });
 });
