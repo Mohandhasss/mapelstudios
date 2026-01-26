@@ -409,3 +409,12 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     justify-content: center;
     background: transparent; /* Changed from black to transparent */
 }
+/* Step 2: Fix for UIverse Button Clicks */
+#start-btn * {
+    pointer-events: none;
+}
+
+/* Move the button 3px up as requested */
+#start-btn {
+    transform: translateY(-3px) !important;
+}
