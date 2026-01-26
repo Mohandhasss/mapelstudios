@@ -18,6 +18,15 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     z-index: 500; 
     pointer-events: none; /* Allows clicks to pass through to buttons but not empty space */
 }
+/* To move JUST the right button further left by 5px */
+#btn-right {
+    margin-right: 5px;
+    pointer-events: auto;
+}
+
+#btn-left {
+    pointer-events: auto;
+}
 .round-btn { 
     width: 50px; 
     height: 50px; 
