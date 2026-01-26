@@ -14,7 +14,7 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     text-transform: uppercase; /* Ensures all letters are capital */
     opacity: 0.8;             /* Matches the slight transparency of the scanner text */
 }
-#start-btn { padding: 18px 45px; background: #b13434; color: white; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; }
+#start-btn { padding: 18px 45px; background: #b13434; color: white; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; margin-bottom: 3px; }
 
 /* The container just holds the buttons and stays out of the way */
 #icon-layer {
