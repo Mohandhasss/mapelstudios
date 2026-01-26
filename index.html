@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mapel Studios AR</title>
-    <link rel="stylesheet" href="css/style.css?v=1.0.2">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 </head>
@@ -33,11 +34,8 @@
 
     <a-scene 
         mindar-image="imageTargetSrc: ./data/targets.mind; filterMinCF:0.0001; filterBeta:0.001; missTolerance: 5; autoStart: false; uiScanning: no; uiLoading: no;" 
-        embedded
-        color-space="sRGB"
-        renderer="colorManagement: true; physicallyCorrectLights: true"
-        xr-mode-ui="enabled: false" 
-        device-orientation-permission-ui="enabled: false">
+        embedded color-space="sRGB" renderer="colorManagement: true; physicallyCorrectLights: true"
+        xr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         
         <a-assets>
             <video id="ar-video" preload="auto" loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
@@ -50,6 +48,6 @@
         </a-entity>
     </a-scene>
 
-    <script src="js/main.js?v=1.0.2"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
