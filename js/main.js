@@ -1,31 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start-btn');
-    const ui = document.getElementById('ui');
-    const scanner = document.getElementById('scanner-container');
-    const icons = document.getElementById('icon-layer');
+    const uiLayer = document.getElementById('ui');
+    const scannerLayer = document.getElementById('scanner-container');
     const sceneEl = document.querySelector('a-scene');
     const targetEntity = document.getElementById('target');
     const arVideo = document.getElementById('ar-video');
 
-    const getVideoUrl = (index) => `assets/video${index}.mp4`;
+    // Helper to get video path
+    const getVideoPath = (idx) => `assets/video${idx}.mp4`;
 
     startBtn.addEventListener('click', () => {
-        ui.style.display = 'none';
-        scanner.style.display = 'flex';
-        icons.style.display = 'flex';
+        // Hide the landing screen
+        uiLayer.style.display = 'none';
+        // Show the corner brackets
+        scannerLayer.style.display = 'flex';
+        // Wake up the AR Camera
         sceneEl.systems['mindar-image-system'].start();
     });
 
+    // When a target image is detected
     targetEntity.addEventListener("targetFound", () => {
-        const currentTarget = targetEntity.getAttribute('mindar-image-target').targetIndex;
-        scanner.style.display = 'none';
-        arVideo.setAttribute('src', getVideoUrl(currentTarget));
+        const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
+        scannerLayer.style.display = 'none'; // Hide corners so video is clear
+        arVideo.setAttribute('src', getVideoPath(index));
         arVideo.load();
-        arVideo.play().catch(() => console.log("Play blocked"));
+        arVideo.play();
     });
 
+    // When the phone moves away from the image
     targetEntity.addEventListener("targetLost", () => {
-        scanner.style.display = 'flex';
+        scannerLayer.style.display = 'flex'; // Show corners again to help user
         arVideo.pause();
     });
 });
