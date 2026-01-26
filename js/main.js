@@ -18,14 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     targetEntity.addEventListener("targetFound", () => {
         const currentTarget = targetEntity.getAttribute('mindar-image-target').targetIndex;
-        scanner.style.display = 'none'; // Hides the scanner when image is matched
+        scanner.style.display = 'none';
         arVideo.setAttribute('src', getVideoUrl(currentTarget));
         arVideo.load();
-        arVideo.play().catch(() => console.log("Auto-play blocked"));
+        arVideo.play().catch(() => console.log("Play blocked"));
     });
 
     targetEntity.addEventListener("targetLost", () => {
-        scanner.style.display = 'flex'; // Shows scanner again if image is lost
+        scanner.style.display = 'flex';
         arVideo.pause();
     });
 });
