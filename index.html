@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mapel Studios AR</title>
-    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
@@ -16,15 +15,16 @@
         <button id="start-btn">ACTIVATE AR</button>
     </div>
 
-    <div id="icon-layer" style="display: none;">
-        <div class="round-btn" id="btn-left"><img src="assets/left-button.png"></div>
-        <div class="round-btn" id="btn-right"><img src="assets/right-button.png"></div>
+    <div id="scanner-container" style="display: none;">
+        <div class="target-box">
+            <div class="corner tl"></div><div class="corner tr"></div>
+            <div class="corner bl"></div><div class="corner br"></div>
+        </div>
+        <div class="status-label">ALIGN TARGET WITHIN CORNERS</div>
     </div>
 
-
-
     <a-scene 
-        mindar-image="imageTargetSrc: ./data/targets.mind; filterMinCF:0.0001; filterBeta:0.001; missTolerance: 5; autoStart: false; uiScanning: no; uiLoading: no;" 
+        mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no; filterMinCF:0.0001; filterBeta:0.001;" 
         embedded color-space="sRGB" renderer="colorManagement: true; physicallyCorrectLights: true"
         xr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         
