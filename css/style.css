@@ -47,13 +47,10 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
 
 
 .main-logo {
-    width: 120px;
+    width: 150px; 
     height: auto;
     margin-bottom: 20px;
-    
-    /* This filter makes the black background "blend" into the page */
-    mix-blend-mode: screen; 
-    
-    /* If the logo is a bit dark, this will make it pop */
-    filter: brightness(1.2) contrast(1.1);
+    position: relative;
+    z-index: 1001; /* Higher than #ui which is 1000 */
+    display: block !important;
 }
