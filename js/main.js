@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetEntity = document.getElementById('target');
     const arVideo = document.getElementById('ar-video');
 
-    // Matches target index to file: video0.mp4, video1.mp4, etc.
     const getVideoUrl = (index) => `assets/video${index}.mp4`;
 
     startBtn.addEventListener('click', () => {
@@ -18,24 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     targetEntity.addEventListener("targetFound", (event) => {
-        // Find which target was scanned
         const currentTarget = targetEntity.getAttribute('mindar-image-target').targetIndex;
-        console.log("Found Target: " + currentTarget);
-
-        // Hide scanner and load the specific video file
         scanner.style.display = 'none';
         arVideo.setAttribute('src', getVideoUrl(currentTarget));
         arVideo.load();
-        
-        // Use a promise to ensure video plays correctly on mobile
-        const playPromise = arVideo.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(error => console.log("Auto-play blocked"));
-        }
+        arVideo.play().catch(() => console.log("Play blocked"));
     });
 
     targetEntity.addEventListener("targetLost", () => {
-        console.log("Target Lost");
         scanner.style.display = 'flex';
         arVideo.pause();
     });
