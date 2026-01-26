@@ -3,7 +3,17 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
 
 /* Landing Overlay */
 #ui { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background:radial-gradient(circle, #1a1a1a 0%, #000000 100%); }
-.logo-text { color: white; font-size: 24px; font-weight: bold; letter-spacing: 6px; margin-bottom: 40px; }
+.logo-text {
+    color: white;
+    /* This matches the 'Scanning' text exactly */
+    font-family: Arial, sans-serif; 
+    font-size: 12px;           /* Adjusted to match the small techy look */
+    letter-spacing: 4px;      /* The 'Scanning' text uses wide spacing */
+    font-weight: 700;         /* Bold weight */
+    margin-bottom: 40px;
+    text-transform: uppercase; /* Ensures all letters are capital */
+    opacity: 0.8;             /* Matches the slight transparency of the scanner text */
+}
 #start-btn { padding: 18px 45px; background: #b13434; color: white; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; }
 
 /* The container just holds the buttons and stays out of the way */
