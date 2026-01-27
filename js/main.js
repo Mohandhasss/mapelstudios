@@ -28,19 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
         scannerLayer.style.display = 'flex';
         arVideo.pause();
     });
-    const btnRight = document.getElementById('btn-right');
-const tutorialBox = document.getElementById('tutorial-popup');
+   const settingsBtn = document.getElementById('btn-right');
+const tutorialWrapper = document.getElementById('tutorial-popup');
 
-if (btnRight && tutorialBox) {
-    // When you click the top-right button
-    btnRight.addEventListener('click', (e) => {
-        e.stopPropagation(); // Stops the click from hitting the AR scene
-        tutorialBox.style.display = 'flex';
+if (settingsBtn && tutorialWrapper) {
+    // Show the Uiverse card when clicking top-right
+    settingsBtn.addEventListener('click', () => {
+        tutorialWrapper.style.display = 'block';
     });
 
-    // When you click the tutorial box, it closes
-    tutorialBox.addEventListener('click', () => {
-        tutorialBox.style.display = 'none';
+    // Hide it when clicking the card itself
+    tutorialWrapper.addEventListener('click', () => {
+        tutorialWrapper.style.display = 'none';
     });
 }
 });
