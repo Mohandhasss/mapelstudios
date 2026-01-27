@@ -461,3 +461,15 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     line-height: 1 !important;
     margin: 0 !important;
 }
+
+#start-btn {
+    /* This shrinks the entire element (button + contents) slightly */
+    transform: scale(0.95) !important; 
+    
+    /* This ensures it stays centered while shrinking */
+    transform-origin: center !important;
+    
+    /* Moves it up 3px (as requested earlier) AND shrinks it */
+    /* Note: We combine them here so they don't overwrite each other */
+    transform: translateY(-3px) scale(0.95) !important;
+}
