@@ -51,6 +51,7 @@
 
     <div id="icon-layer" style="display: none;">
         <div class="round-btn" id="btn-left"><img src="assets/left-button.png" alt="Menu"></div>
+        <div class="round-btn" id="info-btn"><img src="assets/info-icon.png" alt="Info"></div>
         <div class="round-btn" id="btn-right"><img src="assets/right-button.png" alt="Settings"></div>
     </div>
 
@@ -88,5 +89,19 @@
         <p class="sub-text">How to see AR-photo?</p>
       </div>
     </div>
+    <script>
+  const infoBtn = document.getElementById('infoButton');
+  const tutorialCard = document.querySelector('.card');
+
+  // When the "i" button is clicked
+  infoBtn.addEventListener('click', () => {
+    tutorialCard.style.display = 'flex'; // Shows the card
+  });
+
+  // Optional: Click the card to hide it again
+  tutorialCard.addEventListener('click', () => {
+    tutorialCard.style.display = 'none'; // Hides the card
+  });
+</script>
 </body>
 </html>
