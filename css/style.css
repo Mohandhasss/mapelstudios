@@ -8,7 +8,7 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     /* This matches the 'Scanning' text exactly */
     font-family: Arial, sans-serif; 
     font-size: 12px;           /* Adjusted to match the small techy look */
-    letter-spacing: 4px;      /* The 'Scanning' text uses wide spacing */
+    letter-spacing: 3px;      /* The 'Scanning' text uses wide spacing */
     font-weight: 700;         /* Bold weight */
     margin-bottom: 47px;
     text-transform: uppercase; /* Ensures all letters are capital */
@@ -416,7 +416,7 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
 
 /* Move the button 3px up as requested */
 #start-btn {
-    transform: translateY(-8px) !important;
+    transform: translateY(-12px) !important;
 }
 
 #start-btn {
