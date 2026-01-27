@@ -439,3 +439,25 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     font-size: 15px !important; /* Adjust this number to your liking */
     font-weight: 800 !important;
 }
+
+#start-btn {
+    /* Reduce the top/bottom padding to 8px and left/right to 20px */
+    padding: 8px 20px !important; 
+    
+    /* Optional: Force a specific height if it still feels too tall */
+    height: 50px !important; 
+    
+    /* Ensure the button doesn't stretch wider than necessary */
+    width: fit-content !important;
+    min-width: unset !important;
+    
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* This ensures the larger text doesn't get cut off by the smaller button */
+.txt-wrapper {
+    line-height: 1 !important;
+    margin: 0 !important;
+}
