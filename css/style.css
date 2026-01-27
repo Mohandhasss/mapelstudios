@@ -436,6 +436,6 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
 
 /* If the text looks blurry, use font-size instead of scale for the letters */
 .btn-letter {
-    font-size: 18px !important; /* Adjust this number to your liking */
+    font-size: 15px !important; /* Adjust this number to your liking */
     font-weight: 800 !important;
 }
