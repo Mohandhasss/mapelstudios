@@ -473,3 +473,49 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     /* Note: We combine them here so they don't overwrite each other */
     transform: translateY(-20px) scale(0.95) !important;
 }
+
+/* This is the "Skeleton" of the UIverse code, stripped of things that break layouts */
+#tutorial-popup {
+    display: none; /* Stays hidden until you click the button */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5000; /* Stays above your buttons (2000) */
+    
+    width: 85vw !important;
+    height: 50vh !important;
+    background-color: #09090b;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The Rotating Border Logic */
+.card__border {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.card__border::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 10rem;
+    background: linear-gradient(0deg, transparent, #b13434, transparent);
+    animation: rotateTutorial 5s linear infinite;
+    transform-origin: 0% 0%;
+}
+
+@keyframes rotateTutorial {
+    from { transform: rotate(0deg) translate(-50%, -50%); }
+    to { transform: rotate(360deg) translate(-50%, -50%); }
+}
+
+.welcome-text { color: #b13434; font-size: 1.8rem; font-weight: 800; margin: 0; }
+.sub-text { color: #888; font-size: 0.9rem; white-space: nowrap; }
