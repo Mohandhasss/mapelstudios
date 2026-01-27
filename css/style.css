@@ -476,23 +476,68 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
 
 /* This is the "Skeleton" of the UIverse code, stripped of things that break layouts */
 #tutorial-popup {
-    display: none; /* Stays hidden until you click the button */
+    display: none; /* Managed by JS */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 5000; /* Stays above your buttons (2000) */
-    
+    z-index: 5000;
+
+    /* Responsive Size to prevent "Collapse" */
     width: 85vw !important;
-    height: 50vh !important;
-    background-color: #09090b;
-    border-radius: 20px;
-    overflow: hidden;
+    height: 60vh !important;
+    padding: 2rem;
+    
+    background-color: hsla(240, 15%, 9%, 1);
+    background-image: 
+        radial-gradient(at 88% 40%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+        radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+        /* Maroon Glow Accents */
+        radial-gradient(at 0% 64%, hsl(0, 99%, 26%) 0px, transparent 85%),
+        radial-gradient(at 100% 99%, hsl(0, 94%, 13%) 0px, transparent 85%);
+
+    border-radius: 1rem;
+    /* This is the secret "Glass" look from Uiverse */
+    box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+    
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    overflow: hidden;
 }
 
+/* The "Neon" Rotating Border */
+.card__border {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.card__border::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250%; /* Wider to cover the whole box */
+    height: 12rem;
+    /* High Brightness Maroon */
+    background-image: linear-gradient(
+        0deg,
+        hsla(0, 0%, 100%, 0) 0%,
+        hsl(0, 100%, 50%) 40%,
+        hsl(0, 100%, 50%) 60%,
+        hsla(0, 0%, 40%, 0) 100%
+    );
+    animation: rotateTutorial 6s linear infinite;
+    transform-origin: 0% 0%;
+}
+
+@keyframes rotateTutorial {
+    from { transform: rotate(0deg) translate(-50%, -50%); }
+    to { transform: rotate(360deg) translate(-50%, -50%); }
+}
 /* The Rotating Border Logic */
 .card__border {
     position: absolute;
