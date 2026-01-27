@@ -416,19 +416,26 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
 
 /* Move the button 3px up as requested */
 #start-btn {
-    transform: translateY(-3px) !important;
+    transform: translateY(-8px) !important;
 }
 
-/* This forces the button to be perfectly symmetrical */
 #start-btn {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 12px 35px !important; /* Adjust 35px to change side spacing */
-    gap: 15px !important;         /* This controls the space between stars and text */
+    padding: 15px 40px !important; /* Slightly more padding for the bigger text */
+    gap: 20px !important;         /* More space between stars and text */
 }
 
-.txt-wrapper {
-    margin: 0 !important;
-    display: flex !important;
+/* Increases the size of both the stars and the text together */
+#start-btn .btn-svg, 
+#start-btn .txt-wrapper {
+    transform: scale(1.2); /* 1.2 makes it 20% larger. Try 1.5 for 50% larger. */
+    transform-origin: center;
+}
+
+/* If the text looks blurry, use font-size instead of scale for the letters */
+.btn-letter {
+    font-size: 18px !important; /* Adjust this number to your liking */
+    font-weight: 800 !important;
 }
