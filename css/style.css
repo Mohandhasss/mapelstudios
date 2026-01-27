@@ -476,6 +476,11 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
 
 /* From Uiverse.io by iconicchandu */ 
 .card {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
   --white: hsl(0, 0%, 100%);
   --black: hsl(240, 15%, 9%);
   --paragraph: hsl(0, 0%, 83%);
