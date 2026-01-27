@@ -28,4 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
         scannerLayer.style.display = 'flex';
         arVideo.pause();
     });
+    const btnRight = document.getElementById('btn-right');
+const tutorialBox = document.getElementById('tutorial-popup');
+
+if (btnRight && tutorialBox) {
+    // When you click the top-right button
+    btnRight.addEventListener('click', (e) => {
+        e.stopPropagation(); // Stops the click from hitting the AR scene
+        tutorialBox.style.display = 'flex';
+    });
+
+    // When you click the tutorial box, it closes
+    tutorialBox.addEventListener('click', () => {
+        tutorialBox.style.display = 'none';
+    });
+}
 });
