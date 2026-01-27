@@ -28,18 +28,4 @@ document.addEventListener('DOMContentLoaded', () => {
         scannerLayer.style.display = 'flex';
         arVideo.pause();
     });
-   const settingsBtn = document.getElementById('btn-right');
-const tutorialWrapper = document.getElementById('tutorial-popup');
-
-if (settingsBtn && tutorialWrapper) {
-    // Show the Uiverse card when clicking top-right
-    settingsBtn.addEventListener('click', () => {
-        tutorialWrapper.style.display = 'block';
-    });
-
-    // Hide it when clicking the card itself
-    tutorialWrapper.addEventListener('click', () => {
-        tutorialWrapper.style.display = 'none';
-    });
-}
 });
