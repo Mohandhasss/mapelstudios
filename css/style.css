@@ -127,7 +127,7 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
 .btn-svg {
   flex-grow: 1;
   height: 24px;
-  margin-right: 0.5rem;
+  margin-right: 0rem;
   fill: #e8e8e8;
   animation: flicker 2s linear infinite;
   animation-delay: 0.5s;
