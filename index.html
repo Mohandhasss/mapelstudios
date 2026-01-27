@@ -51,6 +51,7 @@
 
     <div id="icon-layer" style="display: none;">
         <div class="round-btn" id="btn-left"><img src="assets/left-button.png" alt="Menu"></div>
+        <div class="round-btn" id="info-btn"><img src="assets/info-icon.png" alt="Info"></div>
         <div class="round-btn" id="btn-right"><img src="assets/right-button.png" alt="Settings"></div>
     </div>
 
@@ -79,16 +80,28 @@
     </a-scene>
 
     <script src="js/main.js"></script>
-    <div id="tutorial-popup" class="card">
-    <!-- From Uiverse.io by iconicchandu --> 
-<div class="card">
-  <div class="card__border"></div>
-  
-  <div class="tutorial-header">
-    <h1 class="welcome-text">WELCOME</h1>
-    <p class="sub-text">How to see AR-photo?</p>
-  </div>
-</div>
-</div>
+
+    <div class="card">
+      <div class="card__border"></div>
+      
+      <div class="tutorial-header">
+        <h1 class="welcome-text">WELCOME</h1>
+        <p class="sub-text">How to see AR-photo?</p>
+      </div>
+    </div>
+    <script>
+  const infoBtn = document.getElementById('infoButton');
+  const tutorialCard = document.querySelector('.card');
+
+  // When the "i" button is clicked
+  infoBtn.addEventListener('click', () => {
+    tutorialCard.style.display = 'flex'; // Shows the card
+  });
+
+  // Optional: Click the card to hide it again
+  tutorialCard.addEventListener('click', () => {
+    tutorialCard.style.display = 'none'; // Hides the card
+  });
+</script>
 </body>
 </html>
