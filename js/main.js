@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         scannerLayer.style.display = 'flex';
         iconLayer.style.display = 'flex'; // Make buttons visible
         sceneEl.systems['mindar-image-system'].start();
+        // ADD THIS LINE:
+    document.getElementById('bg-video').style.display = 'none'; 
+    
+    scannerLayer.style.display = 'flex';
+    iconLayer.style.display = 'flex';
+    sceneEl.systems['mindar-image-system'].start();
     });
 
     targetEntity.addEventListener("targetFound", () => {
