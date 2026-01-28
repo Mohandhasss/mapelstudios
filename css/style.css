@@ -396,6 +396,10 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     object-fit: cover; /* Ensures video fills screen without stretching */
     z-index: -1;        /* Keeps it behind the logo and button */
     filter: brightness(0.6); /* Darkens video so white text/logo is clear */
+    pointer-events: none;       /* The video ignores all touches/clicks */
+    user-select: none;          /* Prevents highlighting */
+    -webkit-user-select: none;
+    -webkit-touch-callout: none; /* Specifically hides the iOS 'save image' menu */
 }
 
 /* Ensure the UI container is transparent */
