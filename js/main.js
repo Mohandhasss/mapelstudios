@@ -10,27 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const getVideoPath = (idx) => `assets/video${idx}.mp4`;
 
     startBtn.addEventListener('click', () => {
-    // 1. Hide the landing text
-    uiLayer.style.display = 'none';
+    // 1. Hide the landing UI
+    document.getElementById('ui').style.display = 'none';
 
-    // 2. Remove the video completely
+    // 2. Locate and REMOVE the background video immediately
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
         bgVideo.pause();
-        bgVideo.remove(); // This deletes the 'wall' blocking the camera
+        bgVideo.remove(); 
     }
 
-    // 3. Set the screen to transparent
-    document.body.style.backgroundColor = "transparent";
+    // 3. SHOW the scanner and buttons
+    // Use the exact IDs from your HTML
+    document.getElementById('scanner-container').style.setProperty('display', 'flex', 'important');
+    document.getElementById('icon-layer').style.setProperty('display', 'flex', 'important');
 
-    // 4. Show the AR UI
-    scannerLayer.style.display = 'flex';
-    iconLayer.style.display = 'flex';
+    // 4. Force the background to clear
+    document.body.style.background = "transparent";
 
     // 5. Start the Engine
     sceneEl.systems['mindar-image-system'].start();
-});
-    targetEntity.addEventListener("targetFound", () => {
+});etEntity.addEventListener("targetFound", () => {
         const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
         scannerLayer.style.display = 'none';
         arVideo.setAttribute('src', getVideoPath(index));
