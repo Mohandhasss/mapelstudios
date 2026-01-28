@@ -2,7 +2,22 @@
 body { background: #000; overflow: hidden; font-family: sans-serif; }
 
 /* Landing Overlay */
-#ui { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; background:radial-gradient(circle, #1a1a1a 0%, #000000 100%); background: transparent !important; }
+#ui {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Remove !important from here so the video/gradient shows up again */
+    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%); 
+}
+
+/* This stays to make sure the A-Frame scene doesn't block the camera */
+a-scene {
+    background: transparent !important;
+}
 .logo-text {
     color: white;
     /* This matches the 'Scanning' text exactly */
@@ -482,21 +497,3 @@ body { background: #000; overflow: hidden; font-family: sans-serif; }
     transform: translateY(-20px) scale(0.95) !important;
 }
 
-/* --- AR ENGINE FIXES --- */
-
-/* Ensures the AR scene doesn't block the camera with a black background */
-a-scene {
-    background: transparent !important;
-}
-
-/* This handles the 'Experience AR' container */
-#ui {
-    /* Existing code... */
-    background: transparent !important;
-    pointer-events: none; /* Allows you to click the AR scene through the hidden UI */
-}
-
-/* This makes sure the video isn't hiding behind the camera feed */
-#bg-video {
-    display: none; /* This will be toggled by JS, but good to have here */
-}
