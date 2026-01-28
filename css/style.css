@@ -507,3 +507,24 @@ canvas.a-canvas {
 body {
     background-color: transparent !important;
 }
+
+/* 1. Make the scene and body transparent so camera is visible */
+a-scene, body, html {
+    background: transparent !important;
+}
+
+/* 2. Push the Scanner and Buttons to the very top layer */
+#icon-layer {
+    z-index: 9999 !important; /* Highest layer for buttons */
+    pointer-events: auto;
+}
+
+#scanner-container {
+    z-index: 9000 !important; /* Just below buttons but above camera */
+    pointer-events: none;      /* Allows you to 'click through' to AR objects */
+}
+
+/* 3. Ensure the landing UI doesn't block the camera after clicking */
+#ui {
+    z-index: 1000;
+}
