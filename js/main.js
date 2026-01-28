@@ -10,27 +10,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const getVideoPath = (idx) => `assets/video${idx}.mp4`;
 
     startBtn.addEventListener('click', () => {
-    // 1. Hide the entire landing UI layer
-    const uiLayer = document.getElementById('ui');
-    if (uiLayer) {
-        uiLayer.style.display = 'none';
-    }
+    // 1. Completely hide the landing UI container
+    uiLayer.style.display = 'none';
 
-    // 2. Target and REMOVE the background video immediately
+    // 2. Locate and REMOVE the background video immediately
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
         bgVideo.pause();
-        bgVideo.src = ""; // Clear source to free memory
+        bgVideo.src = ""; 
         bgVideo.load();
-        bgVideo.remove(); // This deletes it from the page entirely
+        bgVideo.remove(); // This deletes the video from the DOM entirely
     }
 
-    // 3. Show AR specific layers
+    // 3. Make the background of the entire page transparent
+    document.body.style.backgroundColor = "transparent";
+    sceneEl.style.backgroundColor = "transparent";
+
+    // 4. Show the scanner and buttons
     scannerLayer.style.display = 'flex';
     iconLayer.style.display = 'flex';
 
-    // 4. Start AR Engine
-    sceneEl.systems['mindar-image-system'].start();
+    // 5. Start the AR engine
+    if (sceneEl.systems['mindar-image-system']) {
+        sceneEl.systems['mindar-image-system'].start();
+    }
 });
     targetEntity.addEventListener("targetFound", () => {
         const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
