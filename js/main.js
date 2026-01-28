@@ -10,21 +10,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const getVideoPath = (idx) => `assets/video${idx}.mp4`;
 
     startBtn.addEventListener('click', () => {
-    // 1. Hide the UI layer
-    uiLayer.style.display = 'none';
-    
-    // 2. Remove the video entirely
+    // 1. Hide the entire landing UI layer
+    const uiLayer = document.getElementById('ui');
+    if (uiLayer) {
+        uiLayer.style.display = 'none';
+    }
+
+    // 2. Target and REMOVE the background video immediately
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
         bgVideo.pause();
-        bgVideo.remove(); 
+        bgVideo.src = ""; // Clear source to free memory
+        bgVideo.load();
+        bgVideo.remove(); // This deletes it from the page entirely
     }
 
-    // 3. Show the AR layers
+    // 3. Show AR specific layers
     scannerLayer.style.display = 'flex';
     iconLayer.style.display = 'flex';
 
-    // 4. Start the AR engine
+    // 4. Start AR Engine
     sceneEl.systems['mindar-image-system'].start();
 });
     targetEntity.addEventListener("targetFound", () => {
