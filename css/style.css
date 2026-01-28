@@ -553,11 +553,7 @@ video, canvas {
 #icon-layer, #scanner-container {
     z-index: 100 !important;
 }
-/* Force the camera feed to the front by making containers transparent */
-html, body, a-scene {
-    background: transparent !important;
-    background-color: transparent !important;
-}
+
 
 /* Ensure the scanner and buttons stay on top of the camera */
 #scanner-container {
