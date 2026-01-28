@@ -497,3 +497,13 @@ a-scene {
     transform: translateY(-20px) scale(0.95) !important;
 }
 
+/* Force the background to be transparent when AR starts */
+a-scene, 
+canvas.a-canvas {
+    background-color: transparent !important;
+}
+
+/* Ensure nothing in the body is blocking the camera view */
+body {
+    background-color: transparent !important;
+}
