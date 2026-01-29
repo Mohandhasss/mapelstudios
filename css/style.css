@@ -574,6 +574,29 @@ html, body, a-scene, canvas.a-canvas {
 .mindar-ui-overlay, .mindar-ui-loading {
     display: none !important; /* Hide default Mind-AR overlays if they are white */
 }
+
+
 #icon-layer {
     z-index: 9999 !important; /* Highest layer for buttons */
+}
+
+
+/* Force the High-Quality Canvas to stretch and fill the screen */
+.a-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* This removes the "White Curtain" layer */
+a-scene {
+    background: none !important;
+    background-color: transparent !important;
+}
+
+/* Ensure Mind-AR's video doesn't get squeezed */
+video {
+    object-fit: cover !important;
 }
