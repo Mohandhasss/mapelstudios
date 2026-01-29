@@ -11,15 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Internal function to start AR
     const startAR = () => {
-        const arSystem = sceneEl.systems['mindar-image-system'];
-        if (arSystem) {
-            arSystem.start(); 
-            // This resize event is what helps stretch the camera to 100%
-            setTimeout(() => {
-                window.dispatchEvent(new Event('resize'));
-            }, 500);
-        }
-    };
+    const arSystem = sceneEl.systems['mindar-image-system'];
+    if (arSystem) {
+        arSystem.start(); 
+        
+        // First resize immediately
+        window.dispatchEvent(new Event('resize'));
+        
+        // Second resize after 500ms once the UI is fully hidden
+        setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+            console.log("Forcing second resize to fix 75% crop");
+        }, 500);
+    }
+};
 
     startBtn.addEventListener('click', () => {
         uiLayer.style.display = 'none';
