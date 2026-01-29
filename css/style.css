@@ -497,21 +497,8 @@ a-scene {
     transform: translateY(-20px) scale(0.95) !important;
 }
 
-/* Force the background to be transparent when AR starts */
-a-scene, 
-canvas.a-canvas {
-    background-color: transparent !important;
-}
 
-/* Ensure nothing in the body is blocking the camera view */
-body {
-    background-color: transparent !important;
-}
 
-/* 1. Make the scene and body transparent so camera is visible */
-a-scene, body, html {
-    background: transparent !important;
-}
 
 /* 2. Push the Scanner and Buttons to the very top layer */
 #icon-layer {
@@ -530,10 +517,8 @@ a-scene, body, html {
 }
 /* --- AR LAYERING FIXES --- */
 
-/* 1. Make the scene and body transparent so camera is visible */
-html, body, a-scene, #ui {
-    background: transparent !important;
-}
+
+
 
 /* 2. The Camera Feed (Floor 0) */
 video, canvas {
@@ -563,11 +548,6 @@ video, canvas {
     z-index: 9000 !important; /* Above the camera floor */
     justify-content: center;
     align-items: center;
-}
-/* This kills the white wall for good */
-html, body, a-scene, canvas.a-canvas {
-    background: none !important;
-    background-color: transparent !important;
 }
 
 /* Ensure the camera video created by Mind-AR is visible */
