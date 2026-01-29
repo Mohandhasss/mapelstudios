@@ -55,10 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Ensure the video is ready before playing
     arVideo.oncanplay = () => {
-        arVideo.play();
-        // Force the A-Frame element to refresh its texture
-        document.getElementById('video-display').setAttribute('visible', true);
-    };
+    arVideo.play();
+    const videoDisplay = document.getElementById('video-display');
+    videoDisplay.setAttribute('visible', true);
+    
+    // Smooth positioning
+    videoDisplay.object3D.position.set(0, 0, 0.01);
+};
 });
 
     targetEntity.addEventListener("targetLost", () => {
