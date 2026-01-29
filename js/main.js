@@ -12,21 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
     startBtn.addEventListener('click', () => {
     uiLayer.style.display = 'none';
     
-    // Hide landing video
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) bgVideo.style.display = 'none';
 
-    // Show AR layers
     scannerLayer.style.display = 'flex';
     iconLayer.style.display = 'flex';
 
-    // Start AR
-    sceneEl.systems['mindar-image-system'].start();
+    // Check if the system exists before starting
+    if (sceneEl.systems['mindar-image-system']) {
+        console.log("Starting AR Engine...");
+        sceneEl.systems['mindar-image-system'].start(); 
+    } else {
+        console.error("AR System not found!");
+    }
 
-    // ADD THIS: Forces the browser to recalculate the camera size
+    // Force a resize to fix that 40% cropping issue
     setTimeout(() => {
         window.dispatchEvent(new Event('resize'));
-    }, 300); 
+    }, 500);
 });
     etEntity.addEventListener("targetFound", () => {
         const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
