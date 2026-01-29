@@ -47,11 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // FIXED: Changed etEntity to targetEntity
     targetEntity.addEventListener("targetFound", () => {
-        const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
-        scannerLayer.style.display = 'none';
-        arVideo.setAttribute('src', getVideoPath(index));
+    const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
+    scannerLayer.style.display = 'none';
+    
+    arVideo.setAttribute('src', getVideoPath(index));
+    arVideo.load();
+    
+    // Ensure the video is ready before playing
+    arVideo.oncanplay = () => {
         arVideo.play();
-    });
+        // Force the A-Frame element to refresh its texture
+        document.getElementById('video-display').setAttribute('visible', true);
+    };
+});
 
     targetEntity.addEventListener("targetLost", () => {
         scannerLayer.style.display = 'flex';
