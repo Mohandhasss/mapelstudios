@@ -10,22 +10,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const getVideoPath = (idx) => `assets/video${idx}.mp4`;
 
     startBtn.addEventListener('click', () => {
-    // Hide the landing UI
     uiLayer.style.display = 'none';
-
-    // Hide the video normally
+    
+    // Hide landing video
     const bgVideo = document.getElementById('bg-video');
-    if (bgVideo) {
-        bgVideo.style.display = 'none';
-        bgVideo.pause();
-    }
+    if (bgVideo) bgVideo.style.display = 'none';
 
-    // Show AR tools
+    // Show AR layers
     scannerLayer.style.display = 'flex';
     iconLayer.style.display = 'flex';
 
-    // Start Engine
+    // Start AR
     sceneEl.systems['mindar-image-system'].start();
+
+    // ADD THIS: Forces the browser to recalculate the camera size
+    setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, 300); 
 });
     etEntity.addEventListener("targetFound", () => {
         const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
