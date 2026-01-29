@@ -588,6 +588,7 @@ html, body, a-scene, canvas.a-canvas {
     position: absolute;
     top: 0;
     left: 0;
+    object-fit: cover;
 }
 
 /* This removes the "White Curtain" layer */
