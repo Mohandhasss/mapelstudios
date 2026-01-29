@@ -75,8 +75,15 @@
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <a-entity id="target" mindar-image-target="targetIndex: 0">
-            <a-video id="video-display" src="#ar-video" width="1" height="0.562" position="0 0 0"></a-video>
-        </a-entity>
+    <a-video 
+        id="video-display" 
+        src="#ar-video" 
+        width="1" 
+        height="0.562" 
+        position="0 0 0"
+        material="shader: flat; transparent: true; depthTest: false;"
+    ></a-video>
+</a-entity>
     </a-scene>
 
     <video autoplay muted loop playsinline id="bg-video" oncontextmenu="return false;" disablePictureInPicture>
