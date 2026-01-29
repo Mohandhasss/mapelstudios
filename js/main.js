@@ -10,23 +10,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const getVideoPath = (idx) => `assets/video${idx}.mp4`;
 
     startBtn.addEventListener('click', () => {
+    // 1. Hide the Landing UI
     uiLayer.style.display = 'none';
     
+    // 2. Hide the landing video
     const bgVideo = document.getElementById('bg-video');
-    if (bgVideo) bgVideo.style.display = 'none';
+    if (bgVideo) {
+        bgVideo.pause(); // Stops the video
+        bgVideo.style.display = 'none'; // Hides it
+    }
 
+    // 3. Show AR Layers
     scannerLayer.style.display = 'flex';
     iconLayer.style.display = 'flex';
 
-    // Check if the system exists before starting
+    // 4. Start the camera engine
     if (sceneEl.systems['mindar-image-system']) {
-        console.log("Starting AR Engine...");
         sceneEl.systems['mindar-image-system'].start(); 
-    } else {
-        console.error("AR System not found!");
     }
 
-    // Force a resize to fix that 40% cropping issue
+    // 5. Fix the 40% cropping issue by forcing a resize
     setTimeout(() => {
         window.dispatchEvent(new Event('resize'));
     }, 500);
