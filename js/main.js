@@ -16,24 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Hide the landing video
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
-        bgVideo.pause(); // Stops the video
-        bgVideo.style.display = 'none'; // Hides it
+        bgVideo.pause();
+        bgVideo.style.display = 'none';
     }
 
-    // 3. Show AR Layers
+    // 3. Show AR UI
     scannerLayer.style.display = 'flex';
     iconLayer.style.display = 'flex';
 
-    // 4. Start the camera engine
-    if (sceneEl.systems['mindar-image-system']) {
-        sceneEl.systems['mindar-image-system'].start(); 
+    // 4. THE FIX: Wait for A-Frame to be ready before starting MindAR
+    if (sceneEl.hasLoaded) {
+        startAR();
+    } else {
+        sceneEl.addEventListener('loaded', startAR);
     }
-
-    // 5. Fix the 40% cropping issue by forcing a resize
-    setTimeout(() => {
-        window.dispatchEvent(new Event('resize'));
-    }, 500);
 });
+
+function startAR() {
+    const arSystem = sceneEl.systems['mindar-image-system'];
+    if (arSystem) {
+        arSystem.start(); // This triggers the camera permission
+        
+        // Fix the 40% cropping issue by forcing a resize
+        setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+        }, 500);
+    }
+}
     etEntity.addEventListener("targetFound", () => {
         const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
         scannerLayer.style.display = 'none';
