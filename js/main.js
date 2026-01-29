@@ -31,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Start the engine
     sceneEl.systems['mindar-image-system'].start();
+        // Inside startBtn listener, after sceneEl.start()
+setTimeout(() => {
+    window.dispatchEvent(new Event('resize'));
+}, 500); // Wait half a second for the camera to load, then force a screen resize
 });
     etEntity.addEventListener("targetFound", () => {
         const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
