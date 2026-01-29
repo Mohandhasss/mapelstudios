@@ -61,13 +61,12 @@
 
     <a-scene 
         id="sceneEl"
-    mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no; filterMinCF:0.0001; filterBeta:0.001;" 
+    mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no;" 
     embedded 
     color-space="sRGB" 
-    renderer="colorManagement: true; physicallyCorrectLights: true; precision: high; foveationLevel: 0;"
+    renderer="colorManagement: true;"
     xr-mode-ui="enabled: false" 
-    device-orientation-permission-ui="enabled: false"
-    style="background: transparent;">
+    device-orientation-permission-ui="enabled: false">
         
         <a-assets>
             <video id="ar-video" preload="auto" loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
