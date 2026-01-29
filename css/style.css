@@ -581,14 +581,32 @@ video {
     object-fit: cover !important;
 }
 
-/* Force the camera video and the AR canvas to be full screen */
-video, .a-canvas {
+/* This forces the absolute root of the camera to fill the screen */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: transparent !important;
+}
+
+/* Force the MindAR video and A-Frame canvas to fill the screen */
+video, .a-canvas, .mindar-ui-overlay {
     width: 100vw !important;
     height: 100vh !important;
-    object-fit: cover !important; /* This prevents the 'squash' look */
     position: fixed !important;
-    top: 0;
-    left: 0;
+    top: 0 !important;
+    left: 0 !important;
+    object-fit: cover !important; /* This is the key to removing the black/white bars */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure the scene doesn't add any extra spacing */
+a-scene {
+    width: 100vw;
+    height: 100vh;
 }
 
 /* Ensure the scanner container covers the whole screen too */
