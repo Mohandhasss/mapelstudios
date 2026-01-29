@@ -564,7 +564,16 @@ video, canvas {
     justify-content: center;
     align-items: center;
 }
+/* This kills the white wall for good */
+html, body, a-scene, canvas.a-canvas {
+    background: none !important;
+    background-color: transparent !important;
+}
 
+/* Ensure the camera video created by Mind-AR is visible */
+.mindar-ui-overlay, .mindar-ui-loading {
+    display: none !important; /* Hide default Mind-AR overlays if they are white */
+}
 #icon-layer {
     z-index: 9999 !important; /* Highest layer for buttons */
 }
