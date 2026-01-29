@@ -60,9 +60,14 @@
     </div>
 
     <a-scene 
-        mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no; filterMinCF:0.0001; filterBeta:0.001;" 
-        embedded color-space="sRGB" renderer="colorManagement: true; physicallyCorrectLights: true"
-        xr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        id="sceneEl"
+    mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no; filterMinCF:0.0001; filterBeta:0.001;" 
+    embedded 
+    color-space="sRGB" 
+    renderer="colorManagement: true; physicallyCorrectLights: true; precision: high; foveationLevel: 0;"
+    xr-mode-ui="enabled: false" 
+    device-orientation-permission-ui="enabled: false"
+    style="background: transparent;">
         
         <a-assets>
             <video id="ar-video" preload="auto" loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
