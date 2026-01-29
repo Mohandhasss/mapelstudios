@@ -10,25 +10,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const getVideoPath = (idx) => `assets/video${idx}.mp4`;
 
     startBtn.addEventListener('click', () => {
-    // 1. Hide the landing UI completely
+    // 1. Hide the UI layer
     const uiLayer = document.getElementById('ui');
     uiLayer.style.setProperty('display', 'none', 'important');
 
-    // 2. Kill the background video
+    // 2. Remove the background video completely
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
         bgVideo.pause();
         bgVideo.remove(); 
     }
 
-    // 3. Force scanner and buttons to show
-    document.getElementById('scanner-container').style.setProperty('display', 'flex', 'important');
-    document.getElementById('icon-layer').style.setProperty('display', 'flex', 'important');
+    // 3. FORCE the entire page to be see-through
+    document.documentElement.style.background = "transparent";
+    document.body.style.background = "transparent";
+    
+    // 4. Show AR UI
+    document.getElementById('scanner-container').style.display = 'flex';
+    document.getElementById('icon-layer').style.display = 'flex';
 
-    // 4. Force transparency on the body
-    document.body.style.setProperty('background-color', 'transparent', 'important');
-
-    // 5. Start Mind-AR
+    // 5. Start the engine
     sceneEl.systems['mindar-image-system'].start();
 });
     etEntity.addEventListener("targetFound", () => {
