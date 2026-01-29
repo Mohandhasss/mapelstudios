@@ -615,3 +615,21 @@ a-scene {
     width: 100vw;
     pointer-events: none; /* Allows you to tap AR objects through the scanner UI */
 }
+
+/* 1. The Camera Feed (The bottom layer) */
+video:not(#ar-video):not(#bg-video) {
+    z-index: 1 !important;
+    position: fixed !important;
+}
+
+/* 2. The AR Canvas (The layer where your video0.mp4 appears) */
+.a-canvas {
+    z-index: 2 !important; 
+    position: fixed !important;
+    pointer-events: none; /* Let's you click through to UI if needed */
+}
+
+/* 3. Your UI Icons (The top layer) */
+#icon-layer, #scanner-container {
+    z-index: 10 !important;
+}
