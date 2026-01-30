@@ -61,7 +61,7 @@
 
     <a-scene 
         id="sceneEl"
-  mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no; filterMinCF: 0.1; filterBeta: 10;"
+  mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no; filterMinCF: 0.01; filterBeta: 5; maxTrack: 1; warmupTolerance: 2; missTolerance: 2;"
     embedded 
     color-space="sRGB" 
     renderer="colorManagement: true;"
