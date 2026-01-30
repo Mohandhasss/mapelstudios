@@ -47,26 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // FIXED: Changed etEntity to targetEntity
     targetEntity.addEventListener("targetFound", () => {
-    const index = targetEntity.getAttribute('mindar-image-target').targetIndex;
     scannerLayer.style.display = 'none';
     
-    arVideo.setAttribute('src', getVideoPath(index));
-    arVideo.load();
-    
-    // Ensure the video is ready before playing
-    arVideo.oncanplay = () => {
-    arVideo.play().catch(err => console.log('Play error:', err));
-    const videoDisplay = document.getElementById('video-display');
-    videoDisplay.setAttribute('visible', true);
-    videoDisplay.object3D.position.set(0, 0, 0.01);
-    
-    // Force smooth video playback
-    arVideo.playbackRate = 1.0;
-};
+    // Hide video, show 3D model
+    document.getElementById('video-display').setAttribute('visible', false);
+    document.getElementById('model-display').setAttribute('visible', true);
 });
-
     targetEntity.addEventListener("targetLost", () => {
-        scannerLayer.style.display = 'flex';
-        arVideo.pause();
-    });
+    scannerLayer.style.display = 'flex';
+    document.getElementById('model-display').setAttribute('visible', false);
 });
