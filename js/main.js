@@ -55,12 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Ensure the video is ready before playing
     arVideo.oncanplay = () => {
-    arVideo.play();
+    arVideo.play().catch(err => console.log('Play error:', err));
     const videoDisplay = document.getElementById('video-display');
     videoDisplay.setAttribute('visible', true);
-    
-    // Smooth positioning
     videoDisplay.object3D.position.set(0, 0, 0.01);
+    
+    // Force smooth video playback
+    arVideo.playbackRate = 1.0;
 };
 });
 
