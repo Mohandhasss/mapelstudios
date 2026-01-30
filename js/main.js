@@ -63,12 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listener for the second target
 target2Entity.addEventListener("targetFound", () => {
     scannerLayer.style.display = 'none';
-    arVideo2.setAttribute('src', 'assets/video1.mp4'); // Path to your second video
+    
+    // Set the source and play
+    arVideo2.setAttribute('src', 'assets/video1.mp4'); 
+    arVideo2.load(); // Important to refresh the video data
     arVideo2.play();
 });
 
 target2Entity.addEventListener("targetLost", () => {
     scannerLayer.style.display = 'flex';
     arVideo2.pause();
+    arVideo2.currentTime = 0; // Reset for next time
 });
 });
