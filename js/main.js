@@ -3,30 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const uiLayer = document.getElementById('ui');
     const scannerLayer = document.getElementById('scanner-container');
     const iconLayer = document.getElementById('icon-layer');
-    const sceneEl = document.querySelector('a-scene');
+    const sceneEl = document.getElementById('sceneEl');
     const targetEntity = document.getElementById('target');
-    const arVideo = document.getElementById('ar-video');
 
-    const getVideoPath = (idx) => `assets/video${idx}.mp4`;
-
-    // Internal function to start AR
-    const startAR = () => {
-    const arSystem = sceneEl.systems['mindar-image-system'];
-    if (arSystem) {
-        arSystem.start(); 
-        
-        // First resize immediately
-        window.dispatchEvent(new Event('resize'));
-        
-        // Second resize after 500ms once the UI is fully hidden
-        setTimeout(() => {
-            window.dispatchEvent(new Event('resize'));
-            console.log("Forcing second resize to fix 75% crop");
-        }, 500);
+    // 1. Check if button exists to prevent errors
+    if (!startBtn) {
+        console.error("Could not find start-btn! Check your HTML id.");
+        return;
     }
-};
 
     startBtn.addEventListener('click', () => {
+        console.log("Button clicked! Starting AR..."); // Check your console for this!
+
+        // 2. Hide Landing UI
         uiLayer.style.display = 'none';
         
         const bgVideo = document.getElementById('bg-video');
@@ -35,9 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             bgVideo.style.display = 'none';
         }
 
+        // 3. Show AR UI
         scannerLayer.style.display = 'flex';
         iconLayer.style.display = 'flex';
 
+        // 4. Start AR Engine
         if (sceneEl.hasLoaded) {
             startAR();
         } else {
@@ -45,15 +36,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // FIXED: Changed etEntity to targetEntity
+    function startAR() {
+        const arSystem = sceneEl.systems['mindar-image-system'];
+        if (arSystem) {
+            arSystem.start(); 
+            
+            // Fixes the 75% crop issue
+            window.dispatchEvent(new Event('resize'));
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+            }, 500);
+        }
+    }
+
+    // 5. 3D Model Event Listeners
     targetEntity.addEventListener("targetFound", () => {
-    scannerLayer.style.display = 'none';
-    
-    // Hide video, show 3D model
-    document.getElementById('video-display').setAttribute('visible', false);
-    document.getElementById('model-display').setAttribute('visible', true);
-});
+        scannerLayer.style.display = 'none';
+        console.log("3D Model Target Found");
+    });
+
     targetEntity.addEventListener("targetLost", () => {
-    scannerLayer.style.display = 'flex';
-    document.getElementById('model-display').setAttribute('visible', false);
+        scannerLayer.style.display = 'flex';
+    });
 });
