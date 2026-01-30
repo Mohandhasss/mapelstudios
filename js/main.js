@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const iconLayer = document.getElementById('icon-layer');
     const sceneEl = document.getElementById('sceneEl');
     const targetEntity = document.getElementById('target');
+    const target2Entity = document.getElementById('target2');
+    const arVideo2 = document.getElementById('ar-video-2');
 
     // 1. Check if button exists to prevent errors
     if (!startBtn) {
@@ -58,4 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
     targetEntity.addEventListener("targetLost", () => {
         scannerLayer.style.display = 'flex';
     });
+    // Listener for the second target
+target2Entity.addEventListener("targetFound", () => {
+    scannerLayer.style.display = 'none';
+    arVideo2.setAttribute('src', 'assets/video1.mp4'); // Path to your second video
+    arVideo2.play();
+});
+
+target2Entity.addEventListener("targetLost", () => {
+    scannerLayer.style.display = 'flex';
+    arVideo2.pause();
+});
 });
