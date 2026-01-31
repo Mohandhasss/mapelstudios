@@ -8,6 +8,7 @@
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
     <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 </head>
 <body>
 
@@ -61,55 +62,28 @@
     </div>
 
     <a-scene 
-    id="sceneEl"
-mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: false; uiScanning: no; uiLoading: no; filterMinCF: 0.001; filterBeta: 0.01;"
-embedded 
-color-space="sRGB" 
-renderer="colorManagement: true;"
-xr-mode-ui="enabled: false" 
-device-orientation-permission-ui="enabled: false">
-        
-        <a-assets>
-    <video id="ar-video" preload="auto" loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
+  mindar-image="imageTargetSrc: ./data/targets.mind; autoStart: true; filterMinCF:0.0001; filterBeta: 0.001;" 
+  webxr="optionalFeatures: anchors, local-floor;"
+  renderer="colorManagement: true, physicallyCorrectLights: true"
+  vr-mode-ui="enabled: false">
+  
+  <a-assets>
     <a-asset-item id="shoe-model" src="assets/procedural_shoe_test_2.glb"></a-asset-item>
-    <video id="ar-video-2" preload="auto" loop="true" crossorigin="anonymous" playsinline></video>
-</a-assets>
+  </a-assets>
 
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+  <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-entity id="target" mindar-image-target="targetIndex: 0">
-    <a-video 
-        id="video-display" 
-        src="#ar-video" 
-        width="1.0" 
-        height="0.67"
-        position="0 0 0"
-        rotation="0 0 0"
-        material="shader: flat; transparent: true; depthTest: false;"
-        visible="false"
-    ></a-video>
-    
+  <a-entity id="shoe-target" mindar-image-target="targetIndex: 0">
     <a-gltf-model 
-        id="model-display"
-        src="#shoe-model"
-        position="0 0 0.1"
-        scale="3.0 3.0 3.0"
-        rotation="90 0 0"
-        visible="true"
-        class="clickable" gesture-handler="rotationFactor: 1"
-    ></a-gltf-model>
-</a-entity>
-        <a-entity id="target2" mindar-image-target="targetIndex: 1">
-    <a-video 
-        id="video-display-2" 
-        src="#ar-video-2" 
-        width="1" 
-        height="0.562" 
-        position="0 0 0"
-        material="shader: flat; transparent: true; depthTest: false;">
-    </a-video>
-</a-entity>
-    </a-scene>
+      id="shoe-mesh"
+      src="#shoe-model" 
+      rotation="90 0 0" 
+      position="0 0 0" 
+      scale="3 3 3"
+      anchored="persistent: true">
+    </a-gltf-model>
+  </a-entity>
+</a-scene>
 
     <video autoplay muted loop playsinline id="bg-video" oncontextmenu="return false;" disablePictureInPicture>
     <source src="assets/landing-bg.mp4" type="video/mp4">
