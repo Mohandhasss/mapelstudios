@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetEntity = document.getElementById('target');
     const target2Entity = document.getElementById('target2');
     const arVideo2 = document.getElementById('ar-video-2');
-    const sceneEl = document.querySelector('a-scene');
-    const shoeTarget = document.querySelector('#shoe-target');
-    const shoeMesh = document.querySelector('#shoe-mesh');
 
     // 1. Check if button exists to prevent errors
     if (!startBtn) {
@@ -78,19 +75,4 @@ target2Entity.addEventListener("targetLost", () => {
     arVideo2.pause();
     arVideo2.currentTime = 0; // Reset for next time
 });
-    shoeTarget.addEventListener("targetFound", (event) => {
-    console.log("Shoe target found. Locking WebXR anchor...");
-
-    // Check if the browser supports the WebXR Anchor API
-    if (sceneEl.xrSession) {
-      // We request a spatial anchor at the current detected position
-      // This 'fixes' the model to the physical world coordinates of the book
-      shoeMesh.setAttribute('anchored', 'enabled: true');
-    }
-  });
-
-  shoeTarget.addEventListener("targetLost", () => {
-    // We keep the model visible but stop updating it to prevent 'jumping'
-    console.log("Target lost, but anchor is maintaining position.");
-  });
 });
